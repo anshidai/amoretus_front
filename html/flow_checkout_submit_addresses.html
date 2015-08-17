@@ -1,0 +1,408 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Payment</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/shopping_flow.js"></script>
+<script type="text/javascript" src="js/transport.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/user.js"></script>
+<script type="text/javascript" src="js/sizzle.js"></script>
+<script type="text/javascript" src="js/html5.js"></script>
+<script type="text/javascript" src="js/respond.min.js"></script>
+<script type="text/javascript">
+function checkLoginForm(frm) 
+{
+	//frm=document.forms['loginForm'];
+	var error='';
+	var user        = new Object();
+	user.username=frm.elements['username'].value;  
+	user.password=frm.elements['password'].value;
+
+	if (Utils.isEmpty(frm.elements['username'].value)) {
+		error +=username_empty +'<br />';
+		document.getElementById('login_username_notice').innerHTML = username_empty ;
+		// return false;
+	}
+	if (Utils.isEmpty(frm.elements['password'].value)) {
+		 error +=password_empty+'<br />';
+		//alert(password_not_null);
+		//return false;
+	}
+	if(error.length > 0) {
+		//document.getElementById('error_show').style.display="block";
+		//document.getElementById('error_show').innerHTML=error;
+		return false;
+	}
+	else {
+		 Ajax.call('flow.php?step=userlogin', 'users=' + user.toJSONString(), login_f_callback, 'POST', 'JSON');
+		return false;
+	}
+	//return true;
+}
+function login_f_callback(result)
+{
+	if(result.error=="0") {
+		location.href = result.content;
+	}
+	else {
+		var msg="*"+result.content;
+		document.getElementById('login_error_show').style.display="block";
+		document.getElementById('login_error_show').innerHTML=msg;	
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="flow" class="part_main">
+            
+    <header class="part_header" id="back-top">
+		<div class="h-userandcart">
+			<div class="container">
+				<div class="cheader-currency hidden-xs">
+					<div class="header-currency-info"><span class="flag_currency_USD">USD</span></div>
+					<ul class="header-currency-list">
+						<li><a href="#" onclick="Change_currency('GBP');" title="GBP" rel="nofollow" class="flag_currency_GBP">GBP</a></li>
+						<li><a href="#" onclick="Change_currency('EUR');" title="EUR" rel="nofollow" class="flag_currency_EUR">EUR</a></li>
+						<li><a href="#" onclick="Change_currency('CAD');" title="CAD" rel="nofollow" class="flag_currency_CAD">CAD</a></li>
+						<li><a href="#" onclick="Change_currency('AUD');" title="AUD" rel="nofollow" class="flag_currency_AUD">AUD</a></li>
+					</ul>
+				</div>
+				<!-- cheader-currency end-->
+				
+				<span class="h-contact hidden-xs"><em></em>service@amoretu.com</span>
+				<div class="topUser">
+					<span class="hidden-xs"> | </span><a href="https://www.amoretu.com/user.php" rel="nofollow" title="My Account" class="header-login"><em></em>makeli</a>
+					<span> | </span><a href="https://www.amoretu.com/user.php?act=logout" rel="nofollow" title="Logout">Logout</a>
+					<span> | </span>
+					<a href="user.php?act=collection_list" class="header_wishlist hidden-xs" rel="nofollow" title="Wish List"><em></em>Wish List<span id="header_wish_count">0</span></a>
+					<span class="hidden-xs"> | </span>
+				</div> 
+				<!-- topUser end-->
+
+				<div class="mod-shoppingCart">
+					<div class="carttitle" id="topcart">
+						<div class="cart_count has_goods">
+							<a id="ajax_count" href="https://www.amoretu.com/flow.php" rel="nofollow">My Bag<span>2</span></a>
+						</div>
+						<div id="ajax_cart" style="width: 440px;" class="hidden-xs" onmouseout="this.style.cssText = style.cssText.replace(' display: block;','')">
+							<div class="ajax_cart_list">
+								<div id="top_cart_list">
+									<ul>
+										<li>
+											<dl>
+												<dt class="ajax_cart_img">
+													<a href="https://www.amo"><img src="https://www.amoretu.com/images/201409/thumb_img/25196_thumb_G_1409650218502.jpg"></a>
+												</dt>
+												<dd class="ajax_cart_name">
+													<a href="https://www.amoretu.com/sexy-lingerie-chemises/Soft-Thin-Lacy-Bubble-Chemises-g25196.html">Soft Thin Lacy Bubble Chemises</a>
+												</dd>
+												<dd class="cart_amount">
+													<input name="number" type="text" value="1" size="4" class="input-txt" id="goods_number[2336]_top_cart_qty" onkeyup="update_top_cart(this,2336);">
+												</dd>
+												<dd class="cart_amount">
+													<a class="btn_delete" title="Remove Item" href="#" onclick="drop_goods(2336)">Remove</a>
+												</dd>
+											</dl>
+											<br class="clear">
+										</li>
+										<li>
+											<dl>
+												<dt class="ajax_cart_img">
+													<a href="https://www.amoretu.com/sexy-lingerie-chemises/Sexy-Rainbow-Fishnet-Halter-Chemise-Lingerie-g28560.html"><img src="https://www.amoretu.com/images/201507/thumb_img/28560_thumb_G_1436926555418.jpg"></a></dt>
+												<dd class="ajax_cart_name">
+													<a href="https://www.amoretu.com/sexy-lingerie-chemises/Sexy-Rainbow-Fishnet-Halter-Chemise-Lingerie-g28560.html">Sexy Rainbow Fishnet Halter Chemise Lingerie</a>
+												</dd>
+												<dd class="cart_amount">
+													<input name="number" type="text" value="1" size="4" class="input-txt" id="goods_number[2337]_top_cart_qty" onkeyup="update_top_cart(this,2337);">
+												</dd>
+												<dd class="cart_amount">
+													<a class="btn_delete" title="Remove Item" href="#" onclick="drop_goods(2337)">Remove</a>
+												</dd>
+											</dl>
+											<br class="clear">
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="ajax_cart_links">
+								<p class="ajax_subtotal">BAG TOTAL: <br><span id="top_cart_total">$53.70</span></p>
+								<p class="ajax_links"><a class="view_Cart" href="https://www.amoretu.com/flow.php?step=cart">View Bag</a></p>
+								<p class="clear"></p>
+							</div>
+						</div>
+						<!-- ajax_cart end-->
+						
+					</div>
+					<!-- carttitle end-->
+				</div>
+				<!-- mod-shoppingCart end-->
+			</div>
+			<!-- container end-->
+			
+        </div>
+		<!-- h-userandcart end-->
+		
+        <div class="h-main-wapper">
+			<div class="container">
+				<div class="mod-logo">
+					<a href="https://www.amoretu.com/">
+						<img src="https://www.amoretu.com/themes/amoretu/images/logo.png" alt="AMORETU" width="270" height="30" />
+					</a>
+				</div>
+			</div>
+        </div>
+		<!-- h-main-wapper end-->
+		
+    </header>
+	<!-- header end-->
+    	
+	<div class="part_container container">
+		<div class="part_col-4">
+			<div id="checkout-page" class="flow-checkout-Info">
+				<div class="flow-stepImg hidden-xs"><img src="css/img/shop_step2.jpg" alt="step 2" usemap="#Map" class="img-responsive">
+					<map name="Map">
+					  <area shape="rect" coords="3,1,308,48" href="flow.php">
+					</map>
+				</div>
+				
+				<div class="check_right_checkout flow-right-checkout">
+					<div class="block-block flow-items-Info" style="position:relative;">
+						<div class="widget_header site-title"><img src="css/img/check_bag.jpg" width="30" height="34" style="vertical-align:top"> <span>2</span> item(s) in your bag</div>
+						<div class="c_view_item" onclick="toggle_cart(this);">See items <em></em></div>
+						<div class="widget_panel show_widget_panel" id="checkout_cart_info" style="display:none;">
+							<div class="side-cart-list">
+								<table width="98%">
+									<tr class="cartBoxList_item">
+										<td class="side-cart-img">
+											<div><img src="images/25196_thumb_G_1409650218502.jpg" title="Soft Thin Lacy Bubble Chemises" alt="Soft Thin Lacy Bubble Chemises" /></div>
+										</td>
+										<td class="side-cart-iteminfo">
+											<p class="side-cart-name">
+												<a href="" title="Soft Thin Lacy Bubble Chemises"><span class="cartpayItem">Soft Thin Lacy Bubble Chemises</span></a>
+											</p>
+											<p class="side-cart-attr">
+												<span>Size: </span>O/S <br><span>Colour: </span>Red<br>
+											</p>
+											<p class="side-cart-quantity">
+												<b>Qty: </b><span>1*<span class="price-shop"><span>$28.32</span></span></span>
+											</p>
+										</td>
+									</tr>
+									<tr class="cartBoxList_item">
+										<td class="side-cart-img">
+											<div><img src="images/28560_thumb_G_1436926555418.jpg" title="Sexy Rainbow Fishnet Halter Chemise Lingerie" alt="Sexy Rainbow Fishnet Halter Chemise Lingerie" /></div>
+										</td>
+										<td class="side-cart-iteminfo"><p class="side-cart-name"><a href="sexy-lingerie-chemises/Sexy-Rainbow-Fishnet-Halter-Chemise-Lingerie-g28560.html" title="Sexy Rainbow Fishnet Halter Chemise Lingerie"><span class="cartpayItem">Sexy Rainbow Fishnet Halter Chemise Lingerie</span></a></p>
+											<p class="side-cart-attr">
+												<span>Colour: </span>Multi-Colored <br><span>Size: </span>O/S<br>
+											</p>
+											<p class="side-cart-quantity">
+												<b>Qty: </b><span>1*<span class="price-shop"><span>$25.38</span></span></span>
+											</p>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<!-- side-cart-list end-->
+						
+						</div>
+						<!-- widget_panel show_widget_panel end-->
+						
+						<div class="c_cart_total">
+							<ul>
+								<li class="totalprice1">Items Subtotal: <span id="totalprice2">$53.70</span></li>
+								<li class="totalprice">Order Total(exc. shipping): <span id="this_total2">$53.70</span></li>
+							</ul>
+						</div>
+						<!-- c_cart_total end-->
+					  
+					</div>
+					<!-- block-block flow-items-Info end-->
+					
+					<script type="text/javascript">
+					function toggle_cart(elem){
+						var checkout_cart_info = document.getElementById('checkout_cart_info');
+						checkout_cart_info.style.display = checkout_cart_info.style.display == 'none' ? 'block':'none';
+						if(hasClass(elem,'c_show')){
+							removeClass(elem,'c_show');
+						} else {
+							addClass(elem,'c_show');
+						}
+					}
+					</script>
+				</div>
+				<!-- check_right_checkout flow-right-checkout end-->
+				
+				<div class="check_left_checkout flow-left-checkout">
+					<div class="flow-user mod-block" id="flow_user_login_box">
+						<div class="mod-title">
+							<span class="site-title_tit">CHECKOUT </span>
+							<span class="login_user">Signed in as <b>makeli</b></span>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<!-- flow-user mod-block end-->
+
+					<div class="flow-submit-checkout">
+						<div class="flow-shippingAddressInfo block-block2" style="position:relative;">
+							<div class="widget_header site-title">1. ADDRESSES <p><img src="css/img/u78.png" style="vertical-align:middle;"></p></div>
+							<div class="widget_panel mod-blank" id="CHECKOUT_CONSIGNEE_INFO_PANEL">
+								<div class="flow-shippingInfo-user clearfix">
+									<div class="flow-shippingInfo-userchoose info_choose_block">
+										<div><p><span>makei</span><span> li, </span>makeli@gmail.com</p><span>America FeiSiZhou, </span> <span>America, </span><span>FeiSiZhou, </span><span>4324234, </span><span>Austria</span>
+										</div> 
+									</div>
+									<a href="#" onclick="change_step(1,true);return false;" class="mod-modify flow-e-address">Edit</a>
+								</div>
+							</div>
+						</div>
+						<!-- flow-shippingAddressInfo block-block2 -->
+						
+						<script type="text/javascript">
+						var consignee_not_null = "Please enter name of consignee!";
+						var country_not_null = "Please select a country of consignee!";
+						var province_not_null = "Please select a province of consignee!";
+						var city_not_null = "Please select a city of consignee!";
+						var district_not_null = "Please select a district of consignee!";
+						var invalid_email = "Please enter a valid email address.";
+						var address_not_null = "Please enter an address!";
+						var tele_not_null = "Please enter a phone number!";
+						var shipping_not_null = "Please select a shipping method!";
+						var payment_not_null = "Please select a payment mode!";
+						var goodsattr_style = "1";
+						var tele_invaild = "Please enter valid phone No.";
+						var zip_not_num = "Zip code should be numbers";
+						var mobile_invaild = "Mobile No. is invalid";
+						</script>
+
+						<form action="flow.php" method="post" name="theForm" id="theForm" onsubmit="return display_checkout_panel(this);">
+							<script type="text/javascript">
+							var flow_no_shipping = "Select one shipping method.";
+							</script>
+							<div id="checkout-shipping-method" class="block-block shippingInfo-order">
+								<div class="widget_header site-title" id="CHECKOUT_SHIPPING_METHOD_HEADER">2. DELIVERY</div>
+								<div class="widget_panel mod-blank" id="CHECKOUT_SHIPPING_METHOD_PANEL">
+								<table style="width:100%;">
+									<tbody><tr>
+									  <td>
+										<label>
+										<input name="shipping" type="radio" value="6" checked="true" supportcod="0" insure="0" onclick="selectShipping(this)">
+										Post Air Mail (Free)                </label>
+									  </td>
+									  <td><span class="ship_days">10-20 working days</span><span class="ship_region">Worldwide Available</span></td>
+									</tr>
+											  <tr>
+									  <td>
+										<label>
+										<input name="shipping" type="radio" value="7" supportcod="0" insure="0" onclick="selectShipping(this)">
+										Worldwide Royal Mail($6.31)                </label>
+									  </td>
+									  <td><span class="ship_days">7-10 working days</span><span class="ship_region">Worldwide Available</span></td>
+									</tr>
+											  <tr><td colspan="3"><b>TIPS:</b> <span style=" color:#999;">Delivery time except for 48 hours processing time</span></td></tr>
+									</tbody>
+								</table>
+								<div class="c_CONTINUE"><span class="c_CONTINUE_btn" onclick="change_step(3);return false;">CONTINUE</span></div>
+							  </div>
+							</div>
+							<!-- checkout-shipping-method end-->
+							
+							<div class="c_navmod-title">3. OFFER CODES</div>
+							<div class="c_navmod-title">4. ORDER REVIEW</div>
+							<div class="c_navmod-title">5. PAYMENT</div>
+							<script type="text/javascript">
+								var flow_no_payment = "Please select a payment mode!";
+							</script>
+							<script type="text/javascript">
+								function select_payment(obj){
+									var tds = Sizzle('.payment-name');
+									for(var i = 0; i < tds.length; i++){
+										tds[i].className = tds[i].className.replace(' selected','');
+									}
+									obj.parentNode.className += ' selected';
+									if(Sizzle('img',obj)[0].src.indexOf('cardpay') > -1){
+										document.getElementById('flow_card_info').style.display = 'block';
+									} else {
+										document.getElementById('flow_card_info').style.display = 'none';
+									}
+								}
+							</script>
+					
+							<div class="submit-order-opreat">
+								<div id="yj_message"></div>
+								<input type="submit" id="BtnSubmitOrder" class="submit-order btn_disabled" disabled="" value="PLACE ORDER NOW">
+								<input type="hidden" name="pack" value="0">
+								<input type="hidden" name="card" value="0">
+								<input type="hidden" id="order_bonus_id" name="bonus" value="">
+								<input type="hidden" name="step" value="done">
+								<div class="submit-order-notice" style="display:none;"><img src="css/img/check-ajax-loader.gif">Please wait, processing your order...</div>
+							</div>
+						</form>
+					</div>
+					<!-- flow-submit-checkout end-->
+					
+				</div>
+				<!-- check_left_checkout flow-left-checkout end-->
+				
+			</div>
+			<!-- checkout-page end-->
+			
+			<script type="text/javascript" src="js/checkout.js"></script>
+		</div>
+		<!-- part_col-4 end-->
+			  
+	</div>
+	<!-- part_container container end-->
+           
+	<div class="mod-copyRight">
+		<div class="lay_bottom">
+			<div class="f_logo hidden-xs">
+				<img src="css/img/logo-white.png" alt="AMORETU" width="270" height="30" />
+			</div>
+			<p class="copyRight-txt">Copyright &copy; 2014 AMORETU. All Rights Reserved.</p>
+			<img src="css/img/Norton.png" width="120" height="49" alt="Norton" />
+		</div>
+	</div>
+	<div class="litb-icon-back-to-top" id="litb-icon-back-to-top" onclick="document.documentElement.scrollTop = 0;document.body.scrollTop = 0;return false;"></div>       
+
+</div>
+
+<script type="text/javascript">
+var process_request = "Please waiting...";
+var username_empty = "Please enter email address.";
+var username_shorter = "Email address length can\'t less than 3 characters.";
+var username_invalid = "Email address only can be composed of letters, figure and underline.";
+var password_empty = "(Please input password)";
+var password_need = "(6-20 characters must be needed)";
+var password_shorter = "(6-20 characters must be needed)";
+var confirm_password_invalid = "(Password Not Match)";
+var email_empty = "Email can\'t be blank.";
+var email_invalid = "(Invalid Email Address!)";
+var agreement = "You do not agree with the agreement";
+var msn_invalid = "msn address is invalid";
+var qq_invalid = "QQ number is invalid";
+var home_phone_invalid = "Home phone No. is invalid";
+var office_phone_invalid = "Office phone No. is invalid";
+var mobile_phone_invalid = "Mobile No. is invalid";
+var msg_un_blank = "Email is blank";
+var msg_un_length = "Email should not exceed 7 Chinese characters";
+var msg_un_format = "Email contain invalid characters";
+var msg_un_registered = "Email exists, please enter again";
+var msg_can_rg = "You can register";
+var msg_email_blank = "(Please input Email Address)";
+var msg_email_registered = "Email Address is already registered, please login!";
+var msg_email_format = "(Invalid Email Address!)";
+var username_exist = "Email Address is already registered, please login!";
+var compare_no_goods = "You didn\\\\\\\\'t selected any Items with comparative or the product number is less than 2.";
+var btn_buy = "Buy";
+var is_cancel = "Cancel";
+var select_spe = "Please choose specifications of the items";
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,587 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>My Order - AMORETU.COM</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/transport.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/html5.js"></script>
+<script type="text/javascript" src="js/respond.min.js"></script>
+<script type="text/javascript" src="js/sizzle.js"></script>
+</head>
+<body class="layer-user">
+<div class="part_main">
+    
+	<header class="part_header" id="back-top">
+		  <div class="h-userandcart">
+			<div class="container">
+			  <div class="cheader-currency hidden-xs">
+				<div class="header-currency-info"><span class="flag_currency_GBP">GBP</span></div>
+				<ul class="header-currency-list">
+					<li><a href="#" onclick="Change_currency('USD');" title="USD" rel="nofollow" class="flag_currency_USD">USD</a></li>
+				  <li><a href="#" onclick="Change_currency('EUR');" title="EUR" rel="nofollow" class="flag_currency_EUR">EUR</a></li>
+				  <li><a href="#" onclick="Change_currency('CAD');" title="CAD" rel="nofollow" class="flag_currency_CAD">CAD</a></li>
+				  <li><a href="#" onclick="Change_currency('AUD');" title="AUD" rel="nofollow" class="flag_currency_AUD">AUD</a></li>
+				</ul>
+			  </div>
+			  <!-- cheader-currency end-->
+
+			  <span class="h-contact hidden-xs"><em></em>service@amoretu.com</span>
+			  <div class="topUser">
+				<span class="hidden-xs"> | </span><a href="https://www.amoretu.com/user.php" rel="nofollow" title="My Account" class="header-login"><em></em>Login/Register</a>
+				<span> | </span>
+				<a href="user.php?act=collection_list" class="header_wishlist hidden-xs" rel="nofollow" title="Wish List"><em></em>Wish List<span id="header_wish_count">0</span></a>
+				<span class="hidden-xs"> | </span>
+			  </div>
+			  <!-- topUser end-->
+
+			  <div class="mod-shoppingCart">
+				<div class="carttitle" id="topcart">
+				  <div class="cart_count"><a id="ajax_count" href="https://www.amoretu.com/flow.php" rel="nofollow">My Bag<span>0</span></a></div>
+					<div id="ajax_cart" style="width: 300px;" class="hidden-xs"><p class="empty">Your Shopping Bag is empty.</p></div>
+				</div>
+				<!-- carttitle end-->
+			  </div>
+			  <!-- mod-shoppingCart end-->   
+
+			</div>
+			<!-- container end-->
+		  </div>
+		  <!-- h-userandcart end-->
+
+		<div class="h-main-wapper">
+		  <div class="container">
+			<div class="mod-logo"><a href=""><img src="css/img/logo.png" alt="AMORETU" width="270" height="30" /></a></div>
+			<script type="text/javascript">
+				var process_request = "Please waiting...";
+			</script>
+			<div class="nav-main hidden-xs">
+			  <ul class="list-nav-main">
+					<li class="list_nav navhome"><a href="" class="submenu" rel="nofollow">Home</a></li>
+				  <li onmouseleave="set_wide()" onmouseenter="set_nav_pos(this);set_selected_display(this);"  class="list_nav list_nav_1" >
+					  <a class="submenu submenu_list"  href="" >Sexy Lingerie</a>
+					  <div class="navup clearfix">
+						<ul class="headers_navup">
+							<li class="show" onmouseover="hide_child(this)"><a href="" rel="nofollow">SHOP ALL Lingerie</a></li>
+						  <li data-items  onmouseover="show_child(this);">
+							<span>SHOP BY CATEGORIES</span>
+							<ul class="item_navup">
+							  <li ><a href="">Babydoll Set</a></li>
+							  <li ><a href="">Chemise Set</a></li>
+							  <li ><a href="">Teddy & Body Set</a></li>
+							  <li ><a href="">Cami Set & Bra Set</a></li>
+							  <li ><a href="">Basque, Corset & Bustier</a></li>
+							  <li ><a href="">See-through Dress</a></li>
+							  <li ><a href="">Sexy Nightwear</a></li>
+							  <li ><a href="">Sexy Knicker</a></li>
+							  <li ><a href="">Plus Size Lingerie</a></li>
+							</ul>
+						  </li>
+						  <li data-items  onmouseover="show_child(this);">
+							  <span>SHOP BY STYLE</span>
+							  <ul class="item_navup">
+								<li ><a href="">Fair Lady</a></li>
+								<li ><a href="">Sweet Love</a></li>
+								<li ><a href="">Dangerous Woman</a></li>
+								<li ><a href="">Miss Contessa</a></li>
+							  </ul>
+						  </li>
+						  <li data-items  onmouseover="show_child(this);">
+							  <span>SHOP BY DECORATIONS</span>
+							  <ul class="item_navup">
+								<li ><a href="">Tradition Ribbon</a></li>
+								<li ><a href="">Gold Hardware</a></li>
+								<li ><a href="">No Decorations</a></li>
+								<li ><a href="">Lovely Bowknots</a></li>
+								<li ><a href="">Glare Crystal</a></li>
+								<li ><a href="">Luxury Sequins</a></li>
+								<li ><a href=""></a></li>
+							  </ul>
+						  </li>
+						  <li data-items  onmouseover="show_child(this);">
+							  <span>SHOP BY PRINTS</span>
+							  <ul class="item_navup">
+								  <li ><a href="">Colorful Floral</a></li>
+								  <li ><a href="s">Lovely Dots</a></li>
+								  <li ><a href="">Wild Leopard</a></li>
+								  <li ><a href="">stripe</a></li>
+							  </ul>
+						  </li>
+						  <li data-items  onmouseover="show_child(this);">
+							<span>WHAT'S HOT NOW</span>
+							<ul class="item_navup">
+							  <li ><a href="" rel="nofollow">Top 10</a></li>
+							  <li ><a href="" rel="nofollow">Lingerie Clearance</a></li>
+							</ul>
+						  </li>
+						  <li onmouseover="hide_child(this)"><a href="" rel="nofollow">Sexy Lingerie Guides</a></li>
+						</ul>
+						<!-- headers_navup end-->
+					
+						<div class="hidden-mid nav-category-banner wide">
+						<div class="m_at">
+						<div class="offer_con selected"><a href="" rel="nofollow"><img src="images/nav_offer_1110.jpg" width="390" height="220" class="img-responsive"/></a></div>
+						<div class="offer_con"><a href="" rel="nofollow"><img src="images/nav_offer2.jpg" width="390" height="220" class="img-responsive"/></a></div>
+						<div class="offer_nav num2">
+						  <span onclick="change_nav_pic(this,0);" class="selected">1</span>
+						  <span onclick="change_nav_pic(this,1);" class="">2</span>
+						</div>
+					  </div>
+					  <!-- m_at end-->
+						</div>
+						<!-- hidden-mid nav-category-banner end -->
+					  </div>
+					  <!-- navup end-->
+				  </li>
+				  
+				  <li onmouseleave="set_wide()" onmouseenter="set_nav_pos(this);set_selected_display(this);"  class="list_nav list_nav_2" >
+					<a class="submenu submenu_list"  href="" >Swimwear</a>
+					<div class="navup clearfix">
+					  <ul class="headers_navup">
+						<li class="show" onmouseover="hide_child(this)"><a href="" rel="nofollow">SHOP ALL Swimwear</a></li>
+						<li data-items  onmouseover="show_child(this);">
+						  <span>SHOP BY STYLE</span>
+							<ul class="item_navup">
+							  <li ><a href="https://www.amoretu.com/swimwear-bikini">Bikini Set</a></li>
+							  <li ><a href="https://www.amoretu.com/swimwear-one-piece-swimsuit">One-Piece Swimsuit</a></li>
+							  <li ><a href="https://www.amoretu.com/swimwear-beach-dress">Beach Dress</a></li>
+							</ul>
+						</li>
+									<li data-items  onmouseover="show_child(this);">
+						  <span>SHOP BY TOP</span>
+						  <ul class="item_navup">
+							<li ><a href="https://www.amoretu.com/swimwear/Underwired_Cups">Underwired Cups</a></li>
+							<li ><a href="https://www.amoretu.com/swimwear/Padded_Cups">Padded Cups</a></li>
+							<li ><a href="https://www.amoretu.com/swimwear/Triangle_Tops">Triangle Tops</a></li>
+							<li ><a href="https://www.amoretu.com/swimwear/Fashion_Halter">Fashion Halter</a></li>
+							<li ><a href="https://www.amoretu.com/swimwear/Straps_&_One-shoulder">Straps & One-shoulder</a></li>
+							<li ><a href="https://www.amoretu.com/swimwear/Sexy_Strapless">Sexy Strapless</a></li>
+						  </ul>
+						</li>
+						<li data-items  onmouseover="show_child(this);">
+						  <span>SHOP BY BOTTOM</span>
+						  <ul class="item_navup">
+						  <li ><a href="https://www.amoretu.com/swimwear/High_Waist">High Waist</a></li>
+						  <li ><a href="https://www.amoretu.com/swimwear/Strings">Strings</a></li>
+						  <li ><a href="https://www.amoretu.com/swimwear/Thong">Thong</a></li>
+						  <li ><a href="https://www.amoretu.com/swimwear/Brief">Brief</a></li>
+						  </ul>
+						</li>
+						<li data-items  onmouseover="show_child(this);">
+						  <span>SHOP BY COLLECTION</span>
+						  <ul class="item_navup">
+						  <li ><a href="https://www.amoretu.com/swimwear/Very_Sexy">Very Sexy</a></li>
+						  <li ><a href="https://www.amoretu.com/swimwear/Fair_Maiden">Fair Maiden</a></li>
+						  <li ><a href="https://www.amoretu.com/swimwear/Cute_Girls">Cute Girls</a></li>
+						  </ul>
+						</li>
+						<li onmouseover="hide_child(this)"><a href="https://www.amoretu.com/top10-swimwear" rel="nofollow">WHAT'S HOT NOW</a></li>
+					  </ul>
+					  <!-- headers_navup end-->
+
+					  <div class="hidden-mid nav-category-banner wide">
+						<div class="m_at">
+						  <div class="offer_con selected"><a href="" rel="nofollow"><img src="images/nav_offer_1114.jpg" alt="" width="390" height="220" class="img-responsive"/></a></div>
+						</div>
+					  </div>
+					  <!-- hidden-mid nav-category-banner end-->
+					</div>
+				  </li>
+
+				  <li onmouseleave="set_wide()" onmouseenter="set_nav_pos(this);set_selected_display(this);"  class="list_nav list_nav_3" >
+					<a class="submenu submenu_list"  href="https://www.amoretu.com/sexy-hosiery" >Sexy Hosiery</a>
+					<div class="navup clearfix">
+					<ul class="headers_navup">
+					  <li class="show" onmouseover="hide_child(this)"><a href="https://www.amoretu.com/sexy-hosiery/shop-all-sexy-hosiery" rel="nofollow">SHOP ALL Hosiery</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/sexy-hosiery-stockings">Stockings</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/sexy-hosiery-pantyhose">Pantyhose</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/sexy-hosiery-bodystockings">Bodystockings</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/sexy-hosiery-leggings">Leggings</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/sexy-hosiery-garters">Garters</a></li>
+					  <li onmouseover="hide_child(this)"><a href="https://www.amoretu.com/top10-sexy-hosiery" rel="nofollow">WHAT'S HOT NOW</a></li>
+					</ul>
+
+					<div class="hidden-mid nav-category-banner wide">
+					  <div class="m_at">
+						<div class="offer_con selected"><a href="" rel="nofollow"><img src="images/nav_offer3.jpg" alt="" width="390" height="220" class="img-responsive"/></a></div>    
+					  </div>
+					</div>
+					<!-- hidden-mid nav-category-banner wide end-->
+
+					</div>
+					<!-- navup end-->
+				  </li>
+
+				<li onmouseleave="set_wide()" onmouseenter="set_nav_pos(this);set_selected_display(this);"  class="list_nav list_nav_4" >
+				  <a class="submenu submenu_list"  href="https://www.amoretu.com/adult-costume" >ADULT COSTUM</a>
+				  <div class="navup clearfix">
+					<ul class="headers_navup">
+					  <li class="show" onmouseover="hide_child(this)"><a href="https://www.amoretu.com/adult-costume/shop-all-adult-costume" rel="nofollow">SHOP ALL Costume</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/adult-costume-nurses">Nurses</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/adult-costume-christmas">Christmas</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/adult-costume-cops-robbers">Cops & Robbers</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/adult-costume-french-maids">French Maids</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/adult-costume-cats">Cats</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/adult-costume-school-girls">School Girls</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/adult-costume-fairy-tales">Fairy Tales</a></li>
+					</ul>
+					<ul class="headers_navup headers_navup2">
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/adult-costume-bunnys">Bunnys</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/adult-costume-pirates-queens">Pirates & Queens</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/adult-costume-sailors">Sailors</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/adult-costume-devils-witches">Devils & Witches</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/adult-costume-sports">Sports</a></li>
+					  <li onmouseover="hide_child(this)" ><a href="https://www.amoretu.com/adult-costume-plush-animal">Plush Animal</a></li>
+					  <li onmouseover="hide_child(this)"><a href="https://www.amoretu.com/top10-adult-costume" rel="nofollow">WHAT'S HOT NOW</a></li>
+					</ul>
+									  
+					<div class="hidden-mid nav-category-banner wide">
+					  <div class="m_at">
+						<div class="offer_con selected"><a href="" rel="nofollow"><img src="images/nav_offer_1114.jpg" alt="" width="390" height="220" class="img-responsive"/></a></div>
+					  </div>
+					</div>
+					<!-- hidden-mid nav-category-banner wide end-->
+
+				  </div>
+				  <!-- navup end-->
+				</li>  
+			</ul>
+			<!-- list-nav-main end--> 
+
+		  </div>
+			<!-- nav-main end -->
+
+
+			<script type="text/javascript">
+			function show_child(elem){
+				var uls = Sizzle('ul.item_navup');
+				for(var i = 0; i < uls.length; i++){
+					uls[i].style.display = 'none';
+				}
+				Sizzle('ul',elem)[0].style.display = 'block';
+				var offset = getPosition(elem).y - getPosition(elem.parentNode).y;
+				Sizzle('ul',elem)[0].style.top = '-' + offset + 'px';
+				if(Sizzle('ul',elem)[0].clientHeight > elem.parentNode.clientHeight){
+					elem.parentNode.style.height = Sizzle('ul',elem)[0].clientHeight + 'px';
+				} else {
+					Sizzle('ul',elem)[0].style.height = elem.parentNode.clientHeight + 'px';
+				}
+				Sizzle('.nav-category-banner',elem.parentNode.parentNode)[0].className = 'nav-category-banner hidden-mid';
+				var selected = Sizzle('.selected',elem.parentNode);
+				for(var i = 0; i < selected.length; i++){
+					addClass(selected[i],'disable_select');
+				}
+				//console.log('show_child');
+			}
+			function getPosition(element) {
+				var xPosition = 0;
+				var yPosition = 0;
+			  
+				while(element) {
+					xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+					yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+					element = element.offsetParent;
+				}
+				return {x: xPosition, y: yPosition};
+			}
+			function set_wide(){
+				var divs = Sizzle('div.nav-category-banner');
+				for(var i = 0; i < divs.length; i++){
+					divs[i].className = 'hidden-mid nav-category-banner wide';
+				}
+				var uls = Sizzle('ul.item_navup');
+				for(var i = 0; i < uls.length; i++){
+					uls[i].style.display = 'none';
+				}
+				//console.log('set_wide');
+			}
+			function hide_child(elem){
+				var selected = Sizzle('.selected',elem.parentNode);
+				for(var i = 0; i < selected.length; i++){
+					addClass(selected[i],'disable_select');
+				}
+				set_wide();
+				//console.log('hide_child');
+			}
+			function set_nav_pos(elem){
+				var chlid = Sizzle('.navup',elem);
+				chlid[0].style.left = (getPosition(Sizzle('.list_nav')[1]).x - getPosition(elem).x) + 'px'
+				var selected = Sizzle('.disable_select',elem);
+				for(var i = 0; i < selected.length; i++){
+					removeClass(selected[i],'disable_select');
+				}
+			}
+			function change_nav_pic(elem,index){
+				var parent = elem.parentNode.parentNode;
+				var divs = Sizzle('.offer_con',parent);
+				for(var i = 0; i < divs.length; i++){
+					removeClass(divs[i],'selected');
+				}
+				addClass(divs[index],'selected');
+				var spans = Sizzle('span',elem.parentNode);
+				for(var i = 0; i < spans.length; i++){
+					removeClass(spans[i],'selected');
+				}
+				addClass(elem,'selected');
+			}
+			function set_selected_display(elem){
+				var li = Sizzle('.selected',elem)[0];
+				var div = Sizzle('.navup',elem)[0];
+				Sizzle('.item_navup',li)[0].style.display = 'block';
+				if(Sizzle('ul',li)[0].clientHeight > div.clientHeight){
+					div.style.height = Sizzle('ul',elem)[0].clientHeight + 'px';
+				} else {
+					Sizzle('ul',li)[0].style.height = div.clientHeight + 'px';
+				}
+				var offset = getPosition(li).y - getPosition(div).y;
+				Sizzle('ul',li)[0].style.top = '-' + offset + 'px';
+				Sizzle('.nav-category-banner',elem)[0].className = 'nav-category-banner hidden-mid';
+			}
+		</script>
+
+			<div class="header-R">
+			  <script type="text/javascript">
+				function checkSearchForm() 
+				{
+					  var str = document.getElementById('keyword').value;
+					if(str) {
+						location.href='https://www.amoretu.com/search.php?keywords='+str.replace(/[\s|\/]/g,'+');
+						return false;
+					} else {
+						alert("Please entry the keywords!");
+						return false;
+					}
+				}
+				   window.defaultValue = 'Search...';
+			  </script>
+
+			<div class="h-search">
+				<div class="mod-search">
+				  <form id="searchForm" name="searchForm" method="get" action="https://www.amoretu.com/search.php" onSubmit="return checkSearchForm()" class="form-search">
+					<label for="keyword"> </label>
+					<span class="input-txt"><input name="keywords" type="text" id="keyword" value="" onFocus="this.value=''" onBlur="if(!this.value){this.value=window.defaultValue;}"/></span>
+					<input type="submit" value="Go" class="btn-search" />
+				  </form>
+				</div>
+			</div>
+			<!-- h-search end -->
+
+		  <script type="text/javascript">
+			keyword = document.getElementById('keyword');
+			if(keyword && !keyword.value){
+				keyword.value = window.defaultValue;
+			}
+		  </script>
+		</div>
+		<!-- header-R end-->
+
+			<div class="nav_delivery clearfix">
+			  <p class="delivery_L"><span><em></em>FREE SHIPPING ON ALL ORDERS</span></p>
+			  <p class="delivery_M"><span><em></em>REGISTER FOR FREE <b>£3 CASH</b></span></p>
+			  <p class="delivery_R"><span><em></em>FREE EXCHANGE &amp; RETURN IN <b>60 DAYS</b></span></p>
+			</div>
+		</div>
+		<!-- container end-->
+		</div>
+		<!-- h-main-wapper end-->
+			
+	</header>
+	<!-- header end -->
+
+	<div class="part_container container">
+		<div class="layer_col-2">
+			<div class="nav-siderBar-user">
+				<div class="mod-blank clearfix">
+					<ul>
+						<li class="u-link-1"><a href="user.php"><em></em><span>Home</span></a></li>
+						<li class="u-link-2 curs"><a href="user.php?act=order_list"><em></em><span>My Order</span></a></li>
+						<li class="u-link-6"><a href="user.php?act=collection_list"><em></em><span>My Wish List</span></a></li>
+						<li class="u-link-3"><a href="user.php?act=bonus"><em></em><span>My Coupons</span></a></li>
+						<li class="u-link-4"><a href="user.php?act=address"><em></em><span>Address Book</span></a></li>
+						<li class="u-link-5"><a href="user.php?act=profile"><em></em><span>Profile</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- layer_col-2 end-->
+        
+        
+		<div class="layer_col-1">
+			<div class="acount-top-top clearfix">
+				<div class="member-image">
+					<div class="member-photo-container"> <img width="90" height="90" src="//www.gravatar.com/avatar/daadda26ef01ff776c1f5a205961abb4?d=https%3A%2F%2Fwww.amoretu.com%2Fthemes%2Famoretu%2Fimages%2Fnoprofile-avatar.jpg&amp;s=200"> </div>
+					<div class="member-meeting">
+						<p class="hello"><strong>Hi!<br>makeli</strong></p>
+					</div>
+				</div>
+				<div class="acount-top-right">
+					<ul>
+						<li class="acount-top-1"><a title="my coupons" href="user.php?act=bonus"><span>MY COUPONS</span>1</a></li>
+						<li class="acount-top-2"><a title="my WISH LIST" href="user.php?act=collection_list"><span>MY WISH LIST</span>0</a></li>  
+						<li class="acount-top-3-1"><a title="my orders" href="user.php?act=order_list"><em></em>MY ORDERS</a></li>          
+					</ul>
+				</div>
+			</div>                
+            <!-- acount-top-top end-->                                    
+                                
+			<div class="user-order-list mod-block">
+				<div class="mod-title">My Order</div>
+				<div class="mod-blank">
+					<div class="order-sortfy">Show
+						<select onchange="change_per_page(this)" name="">
+							<option value="10" selected="">10</option>
+							<option value="20">20</option>
+							<option value="50">50</option>
+						</select>
+						 per page 
+					</div>
+					<script type="text/Javascript">
+						function change_per_page(select)
+						{
+							var url = window.location.href.replace(/&amp;perpage=\d+/,'');
+							url += '&amp;perpage='+select.value;
+							window.location.href = url;
+						}
+					</script>
+					<table>
+					  <tbody><tr>
+						<th>ORDER</th>
+						<th>DATE</th>
+						<th>TRACKING NUMBER</th>
+						<th>ORDER STATUS</th>
+						<th>SHIP TO</th>
+						<th>ORDER TOTAL</th>
+						<th>&nbsp;</th>
+					  </tr>
+							<tr>
+						  <td class="order-id">0344705803811358</td>
+						  <td class="order-time">08/15/2015</td>
+						  <td class="order-teacking-number"></td>
+						  <td class="order_item-status">
+										<span class="Processing">Unshipped</span>
+									  </td>
+						  <td class="order-ship">makei li</td>
+						  <td class="order_amount">$48.75</td>
+						  <td>
+										<span class="order_payment"><a href="flow.php?step=order_add_cart&amp;&amp;order_id=225">Pay Now</a> | </span>
+										<a href="user.php?act=order_detail&amp;order_id=225">View Order</a> | 
+							<a href="user.php?act=cancel_order&amp;order_id=225">Remove</a>
+						  </td>
+					  </tr>
+					</tbody>
+					</table>
+				</div>
+				<!-- mod-blank end-->
+				
+			</div>
+			<!-- user-order-list mod-block end-->
+
+			<form class="form-page" method="get" action="/user.php" name="selectPageForm">
+				<div class="mod-page">
+					<div class="nav-page">
+						<ul class="list-page-nub"></ul>
+					</div>
+					<div class="mod-page-total">Total <span>1</span>  records</div>
+				</div>
+			</form>
+			<script type="text/Javascript">
+				function selectPage(sel)
+				{
+				sel.form.submit();
+				}
+			</script>
+			<script type="text/javascript">
+				var from_order_empty = "Please select secondary orders you want to combine.";
+				var to_order_empty = "Please select the first order you want to combine.";
+				var order_same = "The first order same with secondary order, please select again.";
+				var confirm_merge = "Are you sure to merge the two orders?";
+			</script>
+         </div>
+		<!-- layer_col-1 end-->
+		
+	</div>
+	<!-- part_container container end-->
+
+</div>
+<!-- part_main end-->
+
+<footer class="part_footer footer-clearfix">
+	<div class="lay_bottom">
+		<div class="mod-help">
+			<div class="footer_help mod-help_1">
+				<h4>Company Info</h4>
+				<ul>
+					<li><a href="https://www.amoretu.com/about-us" title="About Us" rel="nofollow">About Us</a></li>
+					<li><a href="https://www.amoretu.com/privacy-policy" title="Privacy Policy" rel="nofollow">Privacy Policy</a></li>
+					<li><a href="https://www.amoretu.com/terms-condition" title="Terms &amp; Condition" rel="nofollow">Terms & Condition</a></li>
+					<li><a href="https://www.amoretu.com/sitemaps.xml" title="Site Map">Site Map</a></li>
+					<li><a href="https://www.amoretu.com/blog/" title="blog"><h3>Blog</h3></a></li>
+				</ul>
+			</div>
+			<div class="footer_help mod-help_2">
+				<h4>Customer Service</h4>
+				<ul>
+					<li><a href="https://www.amoretu.com/frequently-faqs" title="FAQs" rel="nofollow">FAQs</a></li>
+					<li><a href="https://www.amoretu.com/delivery-policy" title="Shopping &amp; Delivery" rel="nofollow">Shopping & Delivery</a></li>
+					<li><a href="https://www.amoretu.com/payment-refund" title="Payment &amp; Refund" rel="nofollow">Payment & Refund</a></li>
+					<li><a href="https://www.amoretu.com/contact-us" title="Contact Us" rel="nofollow">Contact Us</a></li>
+					<li><a href="https://www.amoretu.com/return-policy" title="Return &amp; Exchange" rel="nofollow">Return & Exchange</a></li>
+					<li><a href="https://www.amoretu.com/advice-for-men" title="Advice for Men" rel="nofollow">Advice for Men</a></li>
+				</ul>
+			</div>
+			<br class="clear"/>
+		</div>
+		<!-- mod-help end-->
+
+		<div class="footer-follow-us">
+			 <h4>follow us</h4>
+				<ul>
+				<li class="footer-facebook"><a href="https://www.facebook.com/amoretu2014" target="_blank">Facebook</a></li>
+				<li class="footer-twitter"><a href="https://twitter.com/xhct105" target="_blank">Twitter</a></li>
+				<li class="footer-pinterest"><a href="http://www.pinterest.com/amoretu/" target="_blank">Pinterest</a></li>
+				<li class="footer-google"><a href="https://plus.google.com/+Amoretu2014" target="_blank">Google</a></li>
+			  </ul>
+			  <div class="footer-email-Subscribe">
+				<input type="text" class="email-Subscribe-input" id="email-Subscribe-input" placeholder="Email Address">
+				<button type="button" class="subscribe-btn" id="email-subscribe-btn" onclick="return submit_email()">Submit</button>
+				<div id="email_Subscribe_notice" class="email_Subscribe_notice error">Please Enter a Valid Email Address</div>
+			  </div>
+		 </div>
+		 <!-- footer-follow-us end-->
+		 
+		<div class="footer-Contacts-us">
+			<h4>NEED HELP? WE'RE HERE</h4>
+			<ul>
+			<li><a href="mailto:service@amoretu.com" rel="nofollow">Email:service@amoretu.com</a></li>
+			<li class="hidden-xs footer-address">Bravery Co Limited. Room 1607, 16/F,<br />77 Leighton Road, Causeway Bay,Hong Kong</li>
+			
+			<li><img src="https://www.amoretu.com/themes/amoretu/images/f_DHL.jpg" width="112" height="36" alt="DHL" />
+			<img src="https://www.amoretu.com/themes/amoretu/images/f_EMS.jpg" width="112" height="36" alt="EMS" />
+			</li>
+			</ul>
+		</div>
+		<!-- footer-Contacts-us end-->
+		<div class="footer-offer-payment hidden-xs hidden-mid"><img src="css/img/foot-ico.jpg" width="980" height="64" alt="payment" /></div>
+	</div>
+	<!-- lay_bottom end-->
+	<div class="mod-copyRight">
+		<div class="lay_bottom">
+			<div class="f_logo hidden-xs"><img src="css/img/logo-white.png" alt="AMORETU" width="270" height="30" /></div>
+			<p class="copyRight-txt">Copyright &copy; 2014 AMORETU. All Rights Reserved.</p>
+			<img src="css/img/Norton.png" width="120" height="49" alt="Norton" />
+		</div>
+	</div>
+	<!-- mod-copyRight end-->
+	<div class="litb-icon-back-to-top" id="litb-icon-back-to-top" onclick="document.documentElement.scrollTop = 0;document.body.scrollTop = 0;return false;"></div>
+</footer>
+<!-- footer end-->   
+
+<script type="text/javascript">
+var msg_title_empty = "Title message is blank.";
+var msg_content_empty = "Message content is blank.";
+var msg_title_limit = "Message title should not exceed 200 charaters";
+</script>
+</body>
+</html>
