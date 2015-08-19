@@ -24,6 +24,7 @@ class GoodsModel extends RelationModel {
 				$val['goods_img'] = C('IMG_HOST').'/'.$val['goods_img'];
 				$val['original_img'] = C('IMG_HOST').'/'.$val['original_img'];
 				$val['sale_num'] = intval((1 - $val['shop_price']/$val['market_price'])*100);
+				$val['url'] = build_uri('goods', array('gid'=>$val['goods_id']));
 				$data[$val['goods_id']] = $val;
 			}
 			unset($res);

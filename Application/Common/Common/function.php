@@ -131,13 +131,15 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
 					$uri .= '-' . $p;
 				}
 			}
-			 break;
+			$uri = "index.php?c=category&a=index&cid=$cid";
+			break;
 			 
 		 case 'goods':
 			if(empty($gid)) {
                 return false;
             } else {
-                $uri = $rewrite ? 'goods-' . $gid : 'goods.php?id=' . $gid;
+				$uri = "index.php?c=goods&a=view&gid=$gid";
+                //$uri = $rewrite ? 'goods-' . $gid : 'goods.php?id=' . $gid;
             }
 			break;
 			
@@ -188,7 +190,7 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
 	if($rewrite) {
 		$uri .= '.html';
 	}
-    return $uri;
+    return C('SITE_URL').'/'.$uri;
 	
 }
 

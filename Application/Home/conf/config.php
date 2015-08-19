@@ -50,7 +50,11 @@ return array(
     //全局过滤配置
     'DEFAULT_FILTER' => '', //全局过滤函数
 	
+	//图片域名
 	'IMG_HOST' => 'http://libaoan.admin.amoretus.com', 
+	
+	//网站域名
+	'SITE_URL' => 'http://libaoan.amoretus.com', 
 
 
 );

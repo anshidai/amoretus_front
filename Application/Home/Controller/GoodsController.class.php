@@ -16,18 +16,28 @@ class GoodsController extends Controller {
 		$goods_id = I('get.gid', 0, 'intval');
 		
 		$goodsModel = D('Goods');
-		$goodsGalleryModel = D('GoodsGallery');
-		
 		$argv['info'] = $goodsModel->getGoodsInfo($goods_id);
+		
+		if(empty($argv['info'])) die('Didn\'t find the related data');
+		
+		$goodsAttrModel = D('GoodsAttr');
+		$goodsGalleryModel = D('GoodsGallery');
+		$categoryModel = D('Category');
 		
 		$argv['album'] = $goodsGalleryModel->getAlbum($goods_id);
 		
-		//dump($argv['album']);
+		$argv['category'] = $categoryModel->where("cat_id='{$argv['info']['cat_id']}'")->find();
+		$argv['category']['url'] = build_uri('category', array('cid'=>$argv['category']['cat_id']), $argv['category']['cat_name']);
+		
+		$argv['attr'] = $goodsAttrModel->getAttr($goods_id);
+		
+		
+		//dump($argv['attr']);
 		
 		$commentModel = D('Comment');
 		
 		
-
+		$argv['site_url'] = C('SITE_URL');
 		$this->assign('argv', $argv);
 
 		$this->display('home/goods_view');

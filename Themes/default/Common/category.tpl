@@ -1,6 +1,6 @@
 <div class="nav-main hidden-xs">
 	<ul class="list-nav-main">
-		<li class="list_nav navhome"><a href="" class="submenu">Home</a></li>
+		<li class="list_nav navhome"><a href="/" class="submenu">Home</a></li>
 		
 		<notempty name="categories">
 		<foreach name="categories" item="vo" key="k">

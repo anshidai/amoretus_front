@@ -42,6 +42,20 @@ class GoodsAttrModel extends RelationModel {
 		return isset($data)? $data: '';
 	}
 	
+	public function getAttr($goods_id)
+	{
+		if(empty($goods_id)) return false;
+		
+		$field = 'a.goods_id,a.attr_id,a.attr_value,a.attr_price,b.attr_name';
+		$res = $this->field($field)->alias('a')->join('__ATTRIBUTE__ b ON a.attr_id=b.attr_id')->where("a.goods_id=$goods_id")->select();
+		if($res) {
+			foreach($res as $k=>$val) {
+				$res[$k]['attr_name'] = str_replace(array(': ', ':'), '', $val['attr_name']);
+			}	
+		}
+		return $res;
+	}
+	
 	
 }
 

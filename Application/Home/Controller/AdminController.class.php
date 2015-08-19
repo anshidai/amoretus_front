@@ -14,20 +14,30 @@ class AdminController extends Controller {
 	public function login()
 	{	
 		if(IS_POST) {
-			$user_name = I('post.user_name', '', 'htmlspecialchars');
+			$username = I('post.username', '', 'htmlspecialchars');
 			$pwd = I('post.password', '');
 			
-			if(empty($user_name) || empty($pwd)) {
+			if(empty($username)) {
+				$this->error('Please enter email address.');
+			}
+			if(!preg_match('/^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/', $username)) {
+				$this->error('Email address only can be composed of letters, figure and underline.');
+			}
+			if(empty($pwd)) {
+				$this->error('Please input password.');
+			}
+			
+			$info = D('Users')->UserLogin($username, $pwd);
+			
+			if(empty($info)) {
 				$this->error('Incorrect account address or password. Please try again.');
 			}
-			$info = D('Users')->UserLogin($user_name, $pwd);
+			set_cookies($info, $_POST['remember']);
+			set_session($info);
+			$this->success('Login successful.', U('index/index'));
 			
-			if($info) {
-				set_cookies($info, $_POST['remember']);
-				set_session($info);
-				$this->success('Login successful.', U('index/index'));
-			}
-			$this->error('Incorrect account address or password. Please try again.');
+		} else {
+			$this->display('user/login');
 		}
 		
 	}
@@ -48,6 +58,17 @@ class AdminController extends Controller {
 		}else {
 			$this->display('user/register');
 		}
+	}
+	
+	public function forgotpassword()
+	{
+		if(IS_POST) {
+		
+		}else {
+			$this->display('user/forgotpassword');
+		}
+		
+		
 	}
 	
 	

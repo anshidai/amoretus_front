@@ -4,10 +4,7 @@
 	  <div class="cheader-currency hidden-xs">
 		<div class="header-currency-info"><span class="flag_currency_USD">USD</span></div>
 		<ul class="header-currency-list">
-			<li><a href="#" onclick="Change_currency('USD');" title="USD" rel="nofollow" class="flag_currency_USD">USD</a></li>
-		  <li><a href="#" onclick="Change_currency('EUR');" title="EUR" rel="nofollow" class="flag_currency_EUR">EUR</a></li>
-		  <li><a href="#" onclick="Change_currency('CAD');" title="CAD" rel="nofollow" class="flag_currency_CAD">CAD</a></li>
-		  <li><a href="#" onclick="Change_currency('AUD');" title="AUD" rel="nofollow" class="flag_currency_AUD">AUD</a></li>
+			<li><a href="javascript:;" title="USD" rel="nofollow" class="flag_currency_USD">USD</a></li>
 		</ul>
 	  </div>
 	  <!-- cheader-currency end-->

@@ -18,7 +18,7 @@ function $(element) {
 	return document.getElementById(element);
 }
 window.attr_arr = {};
-window.site_path = 'https://www.amoretu.com/';
+window.site_path = '{$argv.site_url}';
 </script>
 </head>
 <body class="part_goodsDetails">
@@ -28,8 +28,8 @@ window.site_path = 'https://www.amoretu.com/';
         <div class="part_container container">
 			<div class="nav-uHere hidden-xs">
 				<ul class="list-uHere">
-					<li class="home"><a href="https://www.amoretu.com/">Home</a>/</li> 
-					<li><a href="https://www.amoretu.com/sexy-lingerie-chemises">Chemise Set</a>/</li>
+					<li class="home"><a href="{$argv.site_url}">Home</a>/</li> 
+					<li><a href="{$argv.category.url}">{$argv.category.cat_name}</a>/</li>
 					<li><span class="mod-curs">{$argv.info.goods_name}</span></li>
 				</ul>
 			</div>
@@ -60,7 +60,6 @@ window.site_path = 'https://www.amoretu.com/';
 						</div>
 						<!-- item-img-big end-->
 	
-            
 						<div class="item-gallery">
 							<div class="item-img-turnL updown-disabled" id="item-img-turnL" onclick="gallery_sc(this,-1)"><em></em></div>
 							<div class="mod-blank" id="SCL_Cont_1">
@@ -97,11 +96,7 @@ window.site_path = 'https://www.amoretu.com/';
 					<!-- item-detailsImg end-->
 
 					<div class="mod-item-attr">
-						<a href="https://www.amoretu.com/sexy-lingerie-chemises" class="g-in-cate hidden-xs"><h2>Chemise</h2></a>
-						<div class="goods_prev_next hidden-xs">
-							<a href="https://www.amoretu.com/sexy-lingerie-chemises/Sexy-Rainbow-Fishnet-Halter-Chemise-Lingerie-g28560.html" class="goods_prev">« PREVIOUS</a>/
-							<a href="https://www.amoretu.com/sexy-lingerie-chemises/Deep-V-neck-Tassels-Sexy-Chemises-g25202.html" class="goods_next">NEXT »</a>
-						</div>
+
 						<br class="clear"/>
 						<form action="javascript:addToCart(25196 , 0 , this)" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
 							<div class="item-attr-info">
@@ -115,7 +110,7 @@ window.site_path = 'https://www.amoretu.com/';
 								<div class="item-price">
 									<span class="price-shop"><span class="attr-info goods_price" id="ECS_SHOPPRICE" itemprop="price">USD ${$argv.info.shop_price}</span></span>
 									<script type="text/javascript">
-										window.shop_price = 17.95;
+										window.shop_price = {$argv.info.shop_price};
 									</script>
 								</div>
         
@@ -128,83 +123,33 @@ window.site_path = 'https://www.amoretu.com/';
 													<em>Colour</em><a class="selected"><span id="select_color_value"></span></a>
 												</div>
 												<div class="attr-list" id="colour_list">
-													<select name="spec_colour" id="spec_colour" style="display:none">
-														<option value="Colour">Colour</option>
-														<option value="150744">150744</option>
-														<option value="150745">150745</option>
-														<option value="150746">150746</option>
-														<option value="150747">150747</option>
-													</select>
+												
 													<span>
-														<a>
-															<div class="label" onMouseOver="check_colour( this, 'O/S', 'Red')" onMouseOut="clear_error_colour(this , 'Red')" onclick="select_color(this , '6' , 'Red',150744)">
-															<img src="https://www.amoretu.com/data/attr_img/1409878970138782947.jpg" alt=""/>
-															<em></em>
-															<span class="color_size">O/S</span>
-															<span>Red</span>
+														<a href="javascript:;">
+															<div class="label selected">
+																<img src="__CSS__/img/color_black.jpg" alt="Black" />
+																<em></em>
 															</div>
 															<span class="attrtip hidden-xs">
-																<img src="https://www.amoretu.com/data/attr_img/1409878970138782947.jpg" alt="" />
+																<img src="__CSS__/img/color_black.jpg" alt="" />
+																<span class="colour_attrtip"><i>Black</i></span>
+																<b>Click to view photo</b>
+															</span>
+														</a>
+														<a href="javascript:;">
+															<div class="label selected">
+																<img src="__CSS__/img/color_red.jpg" alt="Red" />
+																<em></em>
+															</div>
+															<span class="attrtip hidden-xs">
+																<img src="__CSS__/img/color_red.jpg" alt="" />
 																<span class="colour_attrtip"><i>Red</i></span>
 																<b>Click to view photo</b>
 															</span>
 														</a>
-														<script type="text/javascript">window.attr_arr['20_150744'] = '<img src="https://www.amoretu.com/data/attr_img/1409878970138782947.jpg" width="30px" height="30px" />Red';</script>
+													
 													</span>
-													<span>
-														<a>
-														<div class="label" onMouseOver="check_colour( this, 'O/S', 'PINK')" onMouseOut="clear_error_colour(this , 'PINK')" onclick="select_color(this , '5' , 'PINK',150745)">
-														<img src="https://www.amoretu.com/data/attr_img/1409878970578115289.jpg" alt=""/>
-														<em></em>
-														<span class="color_size">O/S</span>
-														<span>PINK</span>
-														</div>
-														<span class="attrtip hidden-xs">
-															<img src="https://www.amoretu.com/data/attr_img/1409878970578115289.jpg" alt="" />
-															
-															<span class="colour_attrtip"><i>PINK</i></span>
-															
-															<b>Click to view photo</b>
-														</span>
-														</a>
-														<script>window.attr_arr['20_150745'] = '<img src="https://www.amoretu.com/data/attr_img/1409878970578115289.jpg" width="30px" height="30px" />PINK';</script>
-													</span>
-													<span>
-														<a>
-														<div class="label" onMouseOver="check_colour( this, 'O/S', 'WHITE')" onMouseOut="clear_error_colour(this , 'WHITE')" onclick="select_color(this , '0' , 'WHITE',150746)">
-														<img src="https://www.amoretu.com/data/attr_img/1409878970273455881.jpg" alt=""/>
-														<em></em>
-														<span class="color_size">O/S</span>
-														<span>WHITE</span>
-														</div>
-														<span class="attrtip hidden-xs">
-															<img src="https://www.amoretu.com/data/attr_img/1409878970273455881.jpg" alt="" />
-															
-															<span class="colour_attrtip"><i>WHITE</i></span>
-															
-															<b>Click to view photo</b>
-														</span>
-														</a>
-														<script>window.attr_arr['20_150746'] = '<img src="https://www.amoretu.com/data/attr_img/1409878970273455881.jpg" width="30px" height="30px" />WHITE';</script>
-													</span>
-													<span>
-														<a>
-														<div class="label" onMouseOver="check_colour( this, 'O/S', 'BLACK')" onMouseOut="clear_error_colour(this , 'BLACK')" onclick="select_color(this , '7' , 'BLACK',150747)">
-														<img src="https://www.amoretu.com/data/attr_img/1409878970049532666.jpg" alt=""/>
-														<em></em>
-														<span class="color_size">O/S</span>
-														<span>BLACK</span>
-														</div>
-														<span class="attrtip hidden-xs">
-															<img src="https://www.amoretu.com/data/attr_img/1409878970049532666.jpg" alt="" />
-															
-															<span class="colour_attrtip"><i>BLACK</i></span>
-															
-															<b>Click to view photo</b>
-														</span>
-														</a>
-														<script>window.attr_arr['20_150747'] = '<img src="https://www.amoretu.com/data/attr_img/1409878970049532666.jpg" width="30px" height="30px" />BLACK';</script>
-													</span>
+
 													<div class="atpError" id="colour_atpError" style="display:none"></div>
 												</div>
 												<!-- attr-list end-->
@@ -266,11 +211,14 @@ window.site_path = 'https://www.amoretu.com/';
 								</script>
     	
 								<div class="mod_tab_3 mod-block">
-									<div class="item-goods-description mod-block" id="tab_details" style="display:block;">
-										<p><strong>Material:</strong> dacron<br />
-										<strong>Decorative details:</strong> lace, bubble trim<br />
-										<strong>Product features: </strong>sheer<br />
-										<strong>Includes:</strong> nightclothes</p>
+									<div class="item-goods-description mod-block" id="tab_details">
+										<p>
+										<notempty name="argv.attr">
+										<foreach name="argv.attr" item="vo">
+										<strong>{$vo.attr_name}:</strong> {$vo.attr_value}<br />
+										</foreach>
+										</notempty>
+										</p>
 									</div>
 								</div>
 								<!-- mod_tab_3 end -->
@@ -458,7 +406,7 @@ window.site_path = 'https://www.amoretu.com/';
 								<p><span>C. Hips</span><br>Place the measuring tape across the widest part of your hips/buttocks and measure all the way around while keeping the tape parallel to the floor.</p>
 							</div>
 							<div id="sizeguidepic">
-								<img style="margin:0 9px;" src="https://www.amoretu.com/themes/amoretu/images/women.gif" alt="" class="img-responsive" />
+								<img style="margin:0 9px;" src="__CSS__/img/women.gif" alt="" class="img-responsive" />
 								<p>&nbsp;</p>
 							</div>
 							<br class="clear" />
@@ -496,7 +444,7 @@ window.site_path = 'https://www.amoretu.com/';
 						<div class="goods_payment mod-block" id="tab_payment" style="display:none;">
 							<div class="payment_txt mod-blank">
 								<p style="margin:0px 0px 10px 0px;"><span style="font-weight:700;">Payment method:</span></p>
-								<p style="margin-bottom:15px;"><img src="https://www.amoretu.com/themes/amoretu/images/tlpay2.jpg" width="110" height="40" alt=""/>&nbsp;&nbsp;<img src="https://www.amoretu.com/themes/amoretu/images/paypal2.jpg" width="64" height="40" alt=""/></p>
+								<p style="margin-bottom:15px;"><img src="__CSS__/img/tlpay2.jpg" width="110" height="40" alt=""/>&nbsp;&nbsp;<img src="__CSS__/img/paypal2.jpg" width="64" height="40" alt=""/></p>
 								<div class="Refund_txt"><span>TIPS:</span>
 									<p style="margin:10px 0px 0px 0px;">If you choose the faster way to pay with paypal at shopping bag, the DHL will be the default shipping method.</p>
 									<p>And you will be charge £4, you also can check out regularly with other shipping methods</p>

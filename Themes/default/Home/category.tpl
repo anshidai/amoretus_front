@@ -5,15 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <title>Shop All Lingerie - Sexy Lingerie - AMORETU</title>
 <link href="__CSS__/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="__JS__/common.js"></script>
-<script type="text/javascript" src="__JS__/global.js"></script>
-<script type="text/javascript" src="__JS__/compare.js"></script>
-<script type="text/javascript" src="__JS__/transport.js"></script>
-<script type="text/javascript" src="__JS__/utils.js"></script>
-<script type="text/javascript" src="__JS__/html5.js"></script>
-<script type="text/javascript" src="__JS__/respond.min.js"></script>
-<script type="text/javascript" src="__JS__/sizzle.js"></script>
-<script type="text/javascript" src="__JS__/select.js"></script>
+<script type="text/javascript" src="__JS__/jquery-1.10.2.min.js"></script>
 </head>
 <body class="part_goodsList">
 <div class="part_main">
@@ -224,10 +216,26 @@
 	</div>
 </div>
     
+	<div class="litb-icon-back-to-top" id="back-to-top"></div>
+	
 	<include file="Common:footer" />
     
-	<script type="text/javascript" src="__JS__/in-time-to-load.js"></script> 
-	<script type="text/javascript" src="__JS__/goods_pic.js"></script>  
-	<script type="text/javascript" src="__JS__/goods_view.js"></script>  
+<script type="text/javascript">
+
+	$(function(){  
+		$(window).scroll(function(){
+			if($(document).scrollTop()>100){  
+                $("#back-to-top").fadeIn(500);  
+            }else {
+				$("#back-to-top").fadeOut(500); 
+			}
+		});
+		
+		 $("#back-to-top").click(function(){  
+			$('body,html').animate({scrollTop:0},500);  
+			return false;  
+		});  
+	});
+</script> 
 </body>
 </html>

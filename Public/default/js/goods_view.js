@@ -322,7 +322,7 @@ var selected_color = '';
 			document.getElementById('detailsImg-error').style.display = 'block';
 			var t = setTimeout("clear_html(document.getElementById('detailsImg-error'))" , 2000);	
 		}else{
-			showBigImage(key);
+			//showBigImage(key);
 		}
 	}
 	

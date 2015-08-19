@@ -6,13 +6,8 @@
 <meta name="Keywords" content="" />
 <meta name="Description" content="" />
 <link href="__CSS__/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="__JS__/js/common.js"></script>
-<script type="text/javascript" src="__JS__/js/index.js"></script>
-<script type="text/javascript" src="__JS__/js/transport.js"></script>
-<script type="text/javascript" src="__JS__/js/utils.js"></script>
-<script type="text/javascript" src="__JS__/js/html5.js"></script>
-<script type="text/javascript" src="__JS__/js/respond.min.js"></script>
-<script type="text/javascript" src="__JS__/js/sizzle.js"></script>
+<script type="text/javascript" src="__JS__/jquery-1.10.2.min.js"></script>
+
 </head>
 <body class="part_index">
     <div class="part_main">

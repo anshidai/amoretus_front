@@ -34,7 +34,7 @@ class CommentModel extends RelationModel {
 				$val['goods_img'] = C('IMG_HOST').'/'.$val['goods_img'];
 				$val['original_img'] = C('IMG_HOST').'/'.$val['original_img'];
 				$val['sale_num'] = intval((1 - $val['shop_price']/$val['market_price'])*100);
-				
+				$val['url'] = build_uri('goods', array('gid'=>$val['goods_id']));
 				$data[$val['goods_id']] = $val;
 			}
 			unset($res);
@@ -60,6 +60,7 @@ class CommentModel extends RelationModel {
 				$res[$k]['goods_list']['goods_img'] = C('IMG_HOST').'/'.$val['goods_list']['goods_img'];
 				$res[$k]['goods_list']['original_img'] = C('IMG_HOST').'/'.$val['goods_list']['original_img'];
 				$res[$k]['reviews'] = $this->where("comment_type='$type' AND id_value='{$val['goods_list']['goods_id']}'")->count();
+				$res[$k]['url'] = build_uri('goods', array('gid'=>$val['goods_list']['goods_id']));
 			}
 		}
 		return $res;
