@@ -1658,10 +1658,10 @@ border-style: solid;color: #000;vertical-align: middle; min-width:0px; cursor:po
 /*goods info*/
 .item-detailsImg{ float:left; width:460px; position:relative;}
 .item-img-big{ float:right;}
-.item-img-big a.lightbox{cursor: url('img/zoom_in.png'),auto;height:488px;}
+.item-img-big a.lightbox{height:488px;}
 .item-gallery{ float:left; width:80px; margin-right:10px;}
 .item-gallery .mod-blank {height: 460px;margin: 0 auto;position: relative;overflow: hidden;}
-.item-gallery li{ height:105px; margin:5px 0px; float:left;}
+.item-gallery li{ height:105px; margin:5px 0px; float:left;overflow: hidden;}
 .item-gallery li a{ display:block; height:103px;}
 .item-gallery .item-img-turnL{ background-position:-1px -48px;}
 .item-gallery .item-img-turnR{ background-position:-110px -48px;}
@@ -1778,3 +1778,6 @@ border-style: solid;color: #000;vertical-align: middle; min-width:0px; cursor:po
 .flow_card_info input {display:inline-block;line-height:120%;height:120%;}
 .flow_card_info .cardNumber {width:98%}
 .flow_card_info .cardNumber input {width:68%}
+
+.zoomDiv{z-index:999;position:absolute;top:0px;left:0px;width:200px;height:200px;background:#fff;border:1px solid #ccc;display:none;text-align:center;overflow:hidden;}
+.zoomMask{position:absolute;background:url('img/mask.png') repeat scroll 0 0 transparent;cursor:move;z-index:1;}

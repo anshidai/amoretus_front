@@ -11,7 +11,7 @@
 
 	  <span class="h-contact hidden-xs"><em></em>service@amoretu.com</span>
 	  <div class="topUser">
-		<span class="hidden-xs"> | </span><a href="https://www.amoretu.com/user.php" rel="nofollow" title="My Account" class="header-login"><em></em>Login/Register</a>
+		<span class="hidden-xs"> | </span><a href="/index.php?s=/admin/login" rel="nofollow" title="My Account" class="header-login"><em></em>Login/Register</a>
 		<span> | </span>
 		<a href="user.php?act=collection_list" class="header_wishlist hidden-xs" rel="nofollow" title="Wish List"><em></em>Wish List<span id="header_wish_count">0</span></a>
 		<span class="hidden-xs"> | </span>

@@ -34,7 +34,7 @@ $(function(){
 		var halt = true;
 		
 		if(username.length == 0) {
-			$('#login_username_notice').html(username_empty);
+			$('#login_username_notice').html('<br>'+username_empty);
 			halt = false;
 		}
 		else if(!Utils.isEmail(username)) {

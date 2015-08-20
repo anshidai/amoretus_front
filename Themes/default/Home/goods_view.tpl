@@ -6,20 +6,11 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="__CSS__/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="__JS__/common.js"></script>
-<script type="text/javascript" src="__JS__/transport.js"></script>
-<script type="text/javascript" src="__JS__/utils.js"></script>
-<script type="text/javascript" src="__JS__/goods_view.js"></script>
+<script type="text/javascript" src="__JS__/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="__JS__/sizzle.js"></script>
-<script type="text/javascript" src="__JS__/html5.js"></script>
-<script type="text/javascript" src="__JS__/respond.min.js"></script>
-<script type="text/javascript">
-function $(element) {
-	return document.getElementById(element);
-}
-window.attr_arr = {};
-window.site_path = '{$argv.site_url}';
-</script>
+<script type="text/javascript" src="__JS__/utils.js"></script>
+<script type="text/javascript" src="__JS__/goods.js"></script>
+<script type="text/javascript" src="__JS__/jquery.imagezoom.min.js"></script>
 </head>
 <body class="part_goodsDetails">
 <div class="part_main">
@@ -37,17 +28,9 @@ window.site_path = '{$argv.site_url}';
 				<div id="goodsInfo" class="item-detailsInfo mod-block">
 					<div class="item-detailsImg clearfix">
 						<div class="item-img-big" id="item_good_imgs">
-							<notempty name="argv.album">
-							<foreach name="argv.album" item="vo" key="k">
-							<a class="lightbox" style="display:<eq name="k" value="0">block<else />none</eq>">
-							  <img onclick="show_img(this)" class="goods_img_{$argv.info.goods_id} img-responsive" src="{$vo.img_url}" alt="{$argv.info.goods_name}" width="370" height="488"  />
-							  <span class="item_center_pichelp"></span>
-							</a>
-							</foreach>
-							</notempty>
-					
-							<a id="collect_icon_25196" class="loveit_icon" href="#" onclick="collect(this);return false;" rel="nofollow"><em></em></a>
-							<input type="hidden" class="goods_id" value="25196">
+							<img class="img-responsive jqzoom" src="{$argv.album.0.img_url}" rel="{$argv.album.0.img_url}" alt="{$argv.info.goods_name}" width="370" height="488"  />
+							<a id="collect_icon_{$argv.info.goods_id}" class="loveit_icon" href="javascript:;" rel="nofollow"><em></em></a>
+							<input type="hidden" class="goods_id" value="{$argv.info.goods_id}">
                             <div class="lovealert wish_in">
 								<i></i><strong>LIKE IT!</strong><p>Please longin to save your wish List</p>
 								<a href="user.php" class="sign-in-button overlay" target="_self" rel="nofollow"><span>Login</span></a>
@@ -61,19 +44,15 @@ window.site_path = '{$argv.site_url}';
 						<!-- item-img-big end-->
 	
 						<div class="item-gallery">
-							<div class="item-img-turnL updown-disabled" id="item-img-turnL" onclick="gallery_sc(this,-1)"><em></em></div>
-							<div class="mod-blank" id="SCL_Cont_1">
+							<div class="item-img-turnL updown-disabled" id="item-img-turnL"><em></em></div>
+							<div class="mod-blank">
 								<div class="ScrCont">
 									<div id="List1_G" style="">
 										<ul id="item-gallerys">
-										
 										<notempty name="argv.album">
 										<foreach name="argv.album" item="vo" key="k">
 											<li <eq name="k" value="0">class="gallerys_curs"</eq>>
-												<a href="javascript:void(0);" onClick="showBigImage({$k})" >
-													<img width="78" height="103" src="{$vo.thumb_url}" alt="{$argv.info.goods_name}" class="img-responsive" />
-													<span style="display:none">{$vo.img_url}</span>
-												</a>
+												<a href="javascript:void(0);"><img width="78" height="103" src="{$vo.thumb_url}" mid="{$vo.img_url}" big="{$vo.img_original}" alt="{$argv.info.goods_name}" class="img-responsive" /></a>
 											</li>
 										</foreach>
 										</notempty>
@@ -81,17 +60,15 @@ window.site_path = '{$argv.site_url}';
 										<!-- item-gallerys end-->
 									</div>
 									<!-- List1_G end-->
-									<div id="List2_G"></div>
 								</div>
 								<!-- ScrCont end-->
 							</div>
 							<!-- mod-blank end-->
-							<div class="item-img-turnR" id="item-img-turnR" onclick="gallery_sc(this,1)"><em></em></div>
+							<div class="item-img-turnR" id="item-img-turnR"><em></em></div>
 						</div>
 						<!-- item-gallery end-->
 
 						<div class="detailsImg-error atpError" id="detailsImg-error" style="display:none;"></div>
-						<script type="text/javascript" src="__JS__/goods_pic.js"></script>
 					</div>
 					<!-- item-detailsImg end-->
 
@@ -114,7 +91,6 @@ window.site_path = '{$argv.site_url}';
 									</script>
 								</div>
         
-                        
 								<ul class="list-attr clearfix">
 									<li class="list-attr-left goods_attr_list" id="goods_attr_list">
 										<ul>
@@ -162,11 +138,10 @@ window.site_path = '{$argv.site_url}';
 													</a>
 												</div>
 												<div class="attr-list clearfix" id="size_list">
-													<select name="spec_size" id="spec_size" style="" onchange="change_size(this)">
+													<select name="spec_size" id="spec_size">
 													<option value="Size">please choose the size</option>
-																			<option value="145863" data-value="O/S">O/S(Fits UK size 8-14)</option>
-													<script>window.attr_arr['16_145863'] = 'O/S';</script>
-																			</select>
+													<option value="145863" data-value="O/S">O/S(Fits UK size 8-14)</option>
+													</select>
 													<em class="cursor-Guide hidden-xs" onclick="toggle_login_box(this,event);return false;">Size Guide</em>
 													<div class="atpError" id="size_atpError" style="display:none;"></div>
 												</div>
@@ -532,13 +507,13 @@ window.site_path = '{$argv.site_url}';
 								<form method="post">
 								<ul class="clearfix">
 									<li class="item-img">
-										<a href="https://www.amoretu.com/sexy-lingerie-chemises/Sexy-Rainbow-Fishnet-Halter-Chemise-Lingerie-g28560.html"><img class="goods_img_28560 img-responsive" src="https://www.amoretu.com/images/201507/goods_img/28560_G_1436926555948.jpg" alt="Sexy Rainbow Fishnet Halter Chemise Lingerie" width="250" height="330" />
+										<a href=""><img class="goods_img_28560 img-responsive" src="__IMG__/28560_thumb_G_1436926555418.jpg" alt="Sexy Rainbow Fishnet Halter Chemise Lingerie" width="250" height="330" />
 										<span class="item_center_pichelp"></span>
 										</a>
 										<div class="detailsImg-error atpError" id="detailsImg-error" style="display:none;"></div>                       
 									</li>
 									<li class="item_type_info">
-										<div class="item-name"><a class="goods_name_28560" href="https://www.amoretu.com/sexy-lingerie-chemises/Sexy-Rainbow-Fishnet-Halter-Chemise-Lingerie-g28560.html" title="Sexy Rainbow Fishnet Halter Chemise Lingerie">Sexy Rainbow Fishnet Halter Chemise Lingerie</a></div>
+										<div class="item-name"><a class="goods_name_28560" href="" title="Sexy Rainbow Fishnet Halter Chemise Lingerie">Sexy Rainbow Fishnet Halter Chemise Lingerie</a></div>
 										<p class="item-price">
 											<span class="price-shop"><span class="goods_price">£16.09</span></span>
 										</p>
@@ -565,13 +540,10 @@ window.site_path = '{$argv.site_url}';
 													</div>
 													<div class="attr-list">
 														<input type="radio" class="spec_colour" name="spec_colour" value="Colour" style="display:none" checked="checked">
-														<script type="text/javascript">
-															window.attr_arr['20_158404'] = '<img width="30px" height="30px" src="https://www.amoretu.com/data/attr_img/1436926642650658707.jpg"/> Multi-Colored';
-														</script>
 														<span onclick="return select_releated_color(this);">
 															<a>
 															<div class="label">
-															<img src="https://www.amoretu.com/data/attr_img/1436926642650658707.jpg" alt=""/>
+															<img src="__CSS__/img/color_pink.jpg" alt=""/>
 															<em></em>
 															<span class="color_size">One Size</span>
 															<span class="color_img">https://www.amoretu.com/images/201507/goods_img/28560_P_1436926555227.jpg</span>
@@ -579,7 +551,7 @@ window.site_path = '{$argv.site_url}';
 															<span class="color_value">Multi-Colored</span>
 															</div>
 															<span class="attrtip hidden-xs">
-																<img src="https://www.amoretu.com/data/attr_img/1436926642650658707.jpg" alt="" />
+																<img src="__CSS__/img/color_red.jpg" alt="" />
 																<span class="colour_attrtip"><i>Multi-Colored</i></span>
 																<b>Click to view photo</b>
 															</span>
@@ -601,7 +573,6 @@ window.site_path = '{$argv.site_url}';
 														<select name="spec_size" style="" onchange="select_releated_size(this)">
 														<!--option value="Size">Size</option-->
 															<option value="158405" data-value="O/S">O/S(Fits UK size 10-12)</option>
-															<script>window.attr_arr['16_158405'] = 'O/S';</script>
 														</select>
 														<em class="cursor-Guide" onclick="toggle_login_box(this,event);return false;">Size Guide</em>
 														<div class="atpError" style="display:none;"></div>
@@ -637,7 +608,7 @@ window.site_path = '{$argv.site_url}';
 								<form method="post">
 								<ul class="clearfix">
 									<li class="item-img">
-										<a href="https://www.amoretu.com/sexy-lingerie-chemises/Strappy-Sequin-Cups-Chemise-Lingerie-g28550.html"><img class="goods_img_28550 img-responsive" src="https://www.amoretu.com/images/201507/goods_img/28550_G_1435716753231.jpg" alt="Strappy Sequin Cups Chemise Lingerie" width="250" height="330" />
+										<a href=""><img class="goods_img_28550 img-responsive" src="__IMG__/25679_G_1409650312399.jpg" alt="Strappy Sequin Cups Chemise Lingerie" width="250" height="330" />
 										<span class="item_center_pichelp"></span>
 										</a>
 										<div class="detailsImg-error atpError" id="detailsImg-error" style="display:none;"></div>                       
@@ -666,13 +637,10 @@ window.site_path = '{$argv.site_url}';
 												</div>
 												<div class="attr-list">
 													<input type="radio" class="spec_colour" name="spec_colour" value="Colour" style="display:none" checked="checked">
-													<script type="text/javascript">
-														window.attr_arr['20_158353'] = '<img width="30px" height="30px" src="https://www.amoretu.com/data/attr_img/1435716988482938072.jpg"/> Red';
-													</script>
 													<span onclick="return select_releated_color(this);">
 														<a>
 														<div class="label">
-														<img src="https://www.amoretu.com/data/attr_img/1435716988482938072.jpg" alt=""/>
+														<img src="__CSS__/img/color_pink.jpg" alt=""/>
 														<em></em>
 														<span class="color_size">One Size</span>
 														<span class="color_img">https://www.amoretu.com/images/201507/goods_img/28550_P_1435716753014.jpg</span>
@@ -680,7 +648,7 @@ window.site_path = '{$argv.site_url}';
 														<span class="color_value">Red</span>
 														</div>
 														<span class="attrtip hidden-xs">
-															<img src="https://www.amoretu.com/data/attr_img/1435716988482938072.jpg" alt="" />
+															<img src="__CSS__/img/color_pink.jpg" alt="" />
 															<span class="colour_attrtip"><i>Red</i></span>
 															<b>Click to view photo</b>
 														</span>
@@ -700,7 +668,6 @@ window.site_path = '{$argv.site_url}';
 													<select name="spec_size" style="" onchange="select_releated_size(this)">
 														<!--option value="Size">Size</option-->
 														<option value="158354" data-value="O/S">O/S(Fits UK size 10-12)</option>
-														<script type="text/javascript">window.attr_arr['16_158354'] = 'O/S';</script>
 													</select>
 													<em class="cursor-Guide" onclick="toggle_login_box(this,event);return false;">Size Guide</em>
 													<div class="atpError" style="display:none;"></div>
@@ -736,49 +703,20 @@ window.site_path = '{$argv.site_url}';
 					</div>
 					<!-- mod-blank end-->
 				</div>
+				
+				
 				<script type="text/javascript">
-				(function(){
-					var related_goods = Sizzle('.releated_item_attr');
-					for(var i = 0; i < related_goods.length; i++){
-						var attr_list = Sizzle('.attr-list',related_goods[i]);
-						for(var j = 0; j < attr_list.length; j++){
-							var spans = Sizzle('>span',attr_list[j]);
-							if(spans.length == 1){
-								if(spans[0].click){
-									spans[0].click();
-								} else {
-									var evt = document.createEvent("MouseEvents");
-									evt.initEvent("click", true, true);
-									spans[0].dispatchEvent(evt);
-								}
-							}
-						}
-					}
-				})();
-				</script>
-				<script type="Text/Javascript">
-				function selectPage(sel)
-				{
-				sel.form.submit();
-				}
-				</script>
-				<script type="text/javascript">
-			window.onload = function()
-			{
-			// Compare.init();
-			// fixpng();
-			}
-			var button_compare = '';
-			var exist = "You have chosen %s";
-			var count_limit = "Maximum 4 products can be chosen for comparison";
-			var goods_type_different = "\\\"%s\\\"cannot be compared with Items chosen due to types differences";
-			var compare_no_goods = "You didn\\\\\\\\'t selected any Items with comparative or the product number is less than 2.";
-			var btn_buy = "Buy";
-			var is_cancel = "Cancel";
-			var select_spe = "Please choose specifications of the items";
-			</script>                        
+					var button_compare = '';
+					var exist = "You have chosen %s";
+					var count_limit = "Maximum 4 products can be chosen for comparison";
+					var goods_type_different = "\\\"%s\\\"cannot be compared with Items chosen due to types differences";
+					var compare_no_goods = "You didn\\\\\\\\'t selected any Items with comparative or the product number is less than 2.";
+					var btn_buy = "Buy";
+					var is_cancel = "Cancel";
+					var select_spe = "Please choose specifications of the items";
+				</script>                        
 				<div class="chris_sale_offer" style="margin-bottom:10px;">
-					<a href="https://www.amoretu.com/sexy-christmas"><img src="https://www.amoretu.com/themes/amoretu/images/m-features/20141110_lingerie_chris880x120.jpg" width="880" height="120" alt="Merry Christmas UP TO 50% OFF" class="img-responsive" /></a>
+					<a href="https://www.amoretu.com/sexy-christmas"><img src="__IMG__/20141110_lingerie_chris880x120.jpg" width="880" height="120" alt="Merry Christmas UP TO 50% OFF" class="img-responsive" /></a>
 				</div>
     
 		<div class="goods_other_tab">
@@ -885,13 +823,13 @@ window.site_path = '{$argv.site_url}';
 							<ul class="comment_list" id="tab_comment_list">
 								<li class="comment" itemprop="review" itemscope itemtype="http://schema.org/Review">
 									<div class="comment-userinfo">
-										<div class="comment-bar"><span>Overall Rating  </span><img src="https://www.amoretu.com/themes/amoretu/images/stars4.png" alt="" class="mod-comment-rank" /></div>
+										<div class="comment-bar"><span>Overall Rating  </span><img src="__CSS__/img/stars4.png" alt="" class="mod-comment-rank" /></div>
 										<div class="typeFit">
 											<span class="">Fit Rating</span>
 											<span class="">:&nbsp;&nbsp;</span>True To Size 
 										</div>
 										<div class="Fit_SliderImage">
-											<img src="https://www.amoretu.com/themes/amoretu/images/ratingSlider3.gif" alt="" title="">
+											<img src="__CSS__/img/ratingSlider3.gif" alt="" title="">
 										</div>
 										<div class="comment-userName">by <span>Mamie</span></div>
 										<span class="mod-comment-date" itemprop="datePublished"> Sep 22,2014 </span>
@@ -908,13 +846,13 @@ window.site_path = '{$argv.site_url}';
 								</li>
 								<li class="comment" itemprop="review" itemscope itemtype="http://schema.org/Review">
 									<div class="comment-userinfo">
-										<div class="comment-bar"><span>Overall Rating  </span><img src="https://www.amoretu.com/themes/amoretu/images/stars5.png" alt="" class="mod-comment-rank" /></div>
+										<div class="comment-bar"><span>Overall Rating  </span><img src="__CSS__/img/stars5.png" alt="" class="mod-comment-rank" /></div>
 										<div class="typeFit">
 											<span class="">Fit Rating</span>
 											<span class="">:&nbsp;&nbsp;</span>True To Size 
 										</div>
 										<div class="Fit_SliderImage">
-											<img src="https://www.amoretu.com/themes/amoretu/images/ratingSlider3.gif" alt="" title="">
+											<img src="__CSS__/img/ratingSlider3.gif" alt="" title="">
 										</div>
 										<div class="comment-userName">by <span>Darlene</span></div>
 										<span class="mod-comment-date" itemprop="datePublished"> Sep 22,2014 </span>
@@ -971,7 +909,7 @@ window.site_path = '{$argv.site_url}';
 				</tr>
 				<tr>
 				  <td class="fixed_name" id="added_goods_name">
-				  <img src="https://www.amoretu.com/images/no_picture.jpg" width="70" height="100" alt="" /><span class="hidden-xs"></span>
+				  <img src="__CSS__/img/no_picture.jpg" width="70" height="100" alt="" /><span class="hidden-xs"></span>
 				  </td>
 				  <td id="added_goods_color"></td>
 				  <td id="added_goods_size"></td>
@@ -980,7 +918,7 @@ window.site_path = '{$argv.site_url}';
 				</tr>
 				<tr id="deal_goods_td" style="display:None;">
 				  <td class="fixed_name" id="added_goods_name_deal_goods">
-				  <img src="https://www.amoretu.com/images/no_picture.jpg" width="70" height="100" alt="" /><span class="hidden-xs"></span>
+				  <img src="__CSS__/img/no_picture.jpg" width="70" height="100" alt="" /><span class="hidden-xs"></span>
 				  </td>
 				  <td id="added_goods_color_deal_goods"></td>
 				  <td id="added_goods_size_deal_goods"></td>
@@ -1013,24 +951,5 @@ window.site_path = '{$argv.site_url}';
 </div>
 			
 	<include file="Common:footer" />
-
-<script type="text/javascript">
-	var goods_id = 25196;
-	var goodsattr_style = 1;
-	var gmt_end_time = 0;
-	var day = "day";
-	var hour = "hour";
-	var minute = "minute";
-	var second = "second";
-	var end = "end";
-	var goodsId = 25196;
-	var now_time = 1439614255;
-
-	onload = function(){
-		fixpng();
-		try {onload_leftTime();}
-		catch (e) {}
-	}
-</script>
 </body>
 </html>
