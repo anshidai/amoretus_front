@@ -21,7 +21,7 @@
 					<div id="login_error_show" style="display:none;"></div>
 					<tr>
 					   <td><span class="user-tdTitle">Username <span id="login_username_notice"></span></span>
-						<span class="input-txt"><input name="username" id="login_username" type="text" placeholder="Please enter the email address." size="25" /></span>
+						<span class="input-txt"><input name="user_name" id="login_username" type="text" placeholder="Please enter the email address." size="25" /></span>
 					 </td>
 					</tr>
 					 
@@ -42,14 +42,14 @@
 				</div>
 				</form>
 				
-				<form action="" name="formRegister" class="form-user-register">
+				<form action="" name="formRegister" id="formRegister" class="form-user-register">
 					<div class="sign-title">Create An Account</div>
 					<span style="color:red" id="register_error"></span>
 					  <table>
 						<tr>
 						  <td>
 						  <span class="user-tdTitle">Username <span id="username_notice" class="block-notice-user"></span></span>
-						  <span class="input-txt"><input name="username" type="text" size="25" id="username" placeholder="Please enter the email address." /></span>
+						  <span class="input-txt"><input name="user_name" type="text" size="25" id="user_name" placeholder="Please enter the email address." /></span>
 						   
 						  </td>
 						</tr>
@@ -62,7 +62,7 @@
 						<tr>
 						  <td>
 						  <span class="user-tdTitle">Confirm Password<span class="block-notice-user" id="conform_password_notice"></span></span>
-						  <span class="input-txt"><input name="confirm_password" onblur="check_conform_password(this.value);" type="password" id="conform_password" /></span>
+						  <span class="input-txt"><input name="confirm_password" type="password" id="conform_password" /></span>
 						  </td>
 						</tr>
 					  </table>

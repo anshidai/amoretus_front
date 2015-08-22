@@ -26,7 +26,7 @@ $(function(){
 	$('#login_btn').click(function(){
 		
 		var frm = document.forms['formLogin'];
-		var username = Utils.trim(frm.elements['username'].value);
+		var username = Utils.trim(frm.elements['user_name'].value);
 		var password = Utils.trim(frm.elements['password'].value);
 		var msg = '';
 		var back = frm.elements['back_act'].value;
@@ -59,7 +59,7 @@ $(function(){
 	
 	$('#sign_up').click(function(){
 		var frm = document.forms['formRegister'];
-		var username  = Utils.trim(frm.elements['username'].value);
+		var username  = Utils.trim(frm.elements['user_name'].value);
 		var password  = Utils.trim(frm.elements['password'].value);
 		var confirm_password = Utils.trim(frm.elements['confirm_password'].value);
 		
@@ -84,6 +84,14 @@ $(function(){
 			halt = false;
 		}
 		if(!halt) return false;
+		
+		$.post('/index.php?s=/admin/register', $('#formRegister').serialize(), function(data){
+			if(data.status == 0) {
+				$('#register_error').html(data.info);
+			}
+		});
+		
+		
 		
 	});
 	

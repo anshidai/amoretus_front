@@ -14,7 +14,7 @@ class AdminController extends Controller {
 	public function login()
 	{	
 		if(IS_POST) {
-			$username = I('post.username', '', 'htmlspecialchars');
+			$username = I('post.user_name', '', 'htmlspecialchars');
 			$pwd = I('post.password', '');
 			
 			if(empty($username)) {
@@ -45,15 +45,19 @@ class AdminController extends Controller {
 	public function register()
 	{
 		if(IS_POST) {
-			$User = D('Users');
+			$user = D('Users');
 			
-			if($User->create()) {
-				if(!$User->add()) {
-					$this->error('Sorry, Registration failed.');
+			if($user->create()) {
+				
+				$user->email = $user->user_name;
+				$user->last_time = date('Y-m-d H:i:s');
+				
+				if($user->add()) {
+					$this->success('Registration is successful, welcome you to join.', U('user/index'));
 				}
-				$this->success('Registration is successful, welcome you to join.', U('user/index'));
 			}
-			$this->error($User->getError());
+			$this->error('Sorry, Registration failed.');
+			//$this->error($userModel->getError());
 			
 		}else {
 			$this->display('user/register');

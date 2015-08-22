@@ -24,7 +24,12 @@ class UserController extends AdminController {
 		$info['collect_goods'] = $collectGoodsModel->getCollectGoods($user_id, 4);
 		
 		$this->assign('info', $info);
-		$this->display('user/index');
+		$this->display('User/index');
+	}
+	
+	public function order_list()
+	{
+		$this->display('User/order');
 	}
 	
 	

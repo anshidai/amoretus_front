@@ -18,6 +18,14 @@ class CommonWidget extends Controller{
 		
 		$this->assign('categories', $categories);
 		
-		$this->display('common/category');
+		$this->display('Common/category');
 	}
+
+	public function UserAcountTop()
+	{
+		$this->display('User/acount_top');
+	}
+	
 }
+
+

@@ -195,5 +195,10 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
 }
 
 
+function get_ip()
+{
+	return get_client_ip();
+}
+
 
 
