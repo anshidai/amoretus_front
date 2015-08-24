@@ -10,17 +10,23 @@ class OrderController extends AdminController {
 	{
 		$listRows = C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
 		
-		$orderModel = D('OrderInfo');
+		$order = D('OrderInfo');
 
 		$where['user_id'] = session('user_id');
 		
 		
-		$total = $orderModel->where($where)->count();
+		$total = $order->where($where)->count();
 		
 		$Page = new \Think\Page($total, $listRows);
 		$show = $Page->show(); 
 		
-		$list = $orderModel->relation(true)->where($where)->order('add_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$list = $order->where($where)->order('add_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		if($list) {
+			foreach($list as $k=>$val) {
+				$list[$k]['status'] = get_order_status($val['order_status'], $val['shipping_status'], $val['pay_status']);
+			}
+		}
+		
 		
 		//dump($list);
 		

@@ -23,7 +23,6 @@ function set_session($userinfo = array())
 	}else {
 		session('user_id', $userinfo['user_id']);
 		session('user_name', $userinfo['user_name']);
-		session('email', $userinfo['email']);
 	}
 }
 
@@ -194,11 +193,88 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
 	
 }
 
-
-function get_ip()
+/**
+ *  获取订单状态
+ *
+ * @access  public
+ * @param   int         $user_id        用户ID号
+ * @param   int         $num            列表最大数量
+ * @param   int         $start          列表起始位置
+ * @return  array       $order_list     订单列表
+ */
+function get_order_status($order_status = 0, $pay_status = 0, $shipping_status = 0)
 {
-	return get_client_ip();
+	
+	switch($order_status) {
+		case 0:
+			$order_tips = 'Unconfirmed'; //未确认
+			break;
+		case 1:
+		case 5:
+		case 6:
+			$order_tips = 'Confirmed'; //1-已确认 5-已分单 6-部分分单
+			break;
+		case 2:
+			$order_tips = 'Canceled'; //取消
+			break;
+		case 3:
+			$order_tips = 'Invalid'; //无效
+			break;
+		case 4:
+			$order_tips = 'Returned purchase'; //退货
+			break;
+		default:
+			$order_tips = 'Unconfirmed';
+			break;
+	}
+	
+	switch($pay_status) {
+		case 0:
+			$pay_tips = 'Unpaid'; //未付款
+			break;
+		case 1:
+			$pay_tips = 'Paying'; //付款中
+			break;
+		case 2:
+			$pay_tips = 'Payed'; //已付款
+			break;
+		default:
+			$pay_tips = 'Unpaid';
+			break;
+	}
+	
+	switch($shipping_status) {
+		case 0:
+			$shipping_tips = 'Unshipped'; //未发货
+			break;
+		case 1:
+		case 6:
+			$shipping_tips = 'Shipped'; //1-已发货 6-已发货(部分商品)
+			break;
+		case 2:
+			$shipping_tips = 'Received'; //已收货
+			break;
+		case 3:
+			$shipping_tips = 'Preparing'; //备货中
+			break;
+		case 4:
+			$shipping_tips = 'Shipped(part of all)'; //已发货(部分商品)
+			break;
+		case 5:
+			$shipping_tips = 'Preparing'; //发货中(处理分单)
+			break;
+		default:
+			break;
+			$shipping_tips = 'Unshipped';
+			break;
+	}
+	
+	
+	return array(
+		'order_tips' => $order_tips,
+		'pay_tips' => $pay_tips,
+		'shipping_tips' => $shipping_tips,
+		);
 }
-
 
 

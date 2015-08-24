@@ -1,91 +1,97 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
+<!DOCTYPE html> 
+<html lang="en"> 
 <head>
-<meta charset="utf-8"/>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<title>Fashion Clothing Plos Size</title>
-<link href="__CSS__/global.css" rel="stylesheet" type="text/css">
-<link href="__CSS__/style.css" rel="stylesheet" type="text/css">
-<link href="__CSS__/user.css" rel="stylesheet" type="text/css">
-<script src="__JS__/jquery-1.7.2.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-	var websiteDisplay=function(){
-		if($(window).width()>=1250){$('body').addClass('w_1200');}
-		$(window).resize(function(){
-			if($(window).width()>=1250){
-				$('body').addClass('w_1200');
-			}else{
-				$('body').removeClass('w_1200');
-			}
-		});
-	}
-$(window).resize(function(){websiteDisplay();});
-websiteDisplay();
-</script>
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>My Order</title>
+<link href="__CSS__/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__JS__/jquery-1.10.2.min.js"></script>
 </head>
-<body>
-<include file="Common:header" />
+<body class="layer-user">
+<div class="part_main">
+    
+	<include file="Common:header" />
 
-<div id="main" class="w">
-	<div id="lib_user" class="clearfix">
-		<div id="lib_user_crumb" class="widget">
-			<ul class="crumb_box clearfix">
-				<li class="home"><a href="/" title="Home">Home<i></i></a></li>
-				<li class="crumb1"><a href="/account/" title="My Account">My Account<i></i></a></li>		<li class="crumb2 root"><a href="/account/orders/" title="My Orders">My Orders<i></i></a></li>
-			</ul>
-		</div>
-		<include file="Common:user_menu" />
-		
-		<div id="lib_user_main">
-            <h1 class="lib_user_title">My Orders</h1>
-			<table id="lib_user_order" cellpadding="0" cellspacing="0" width="100%">
-				<tr>
-					<th width="110">Order Date</th>
-					<th width="110">Order Number</th>
-					<th width="90">Order Total</th>
-					<th width="150">Order Status</th>
-					<th width="180">Action</th>
-				</tr>
-				<notempty name="list">
-				<foreach name="list" item="vo">
-				<tr class="odd">
-					<td>{$vo.order_list.add_time|date="m/d/Y", ###}</td>
-					<td><a class="order_info" href="/account/orders/view-{$vo.order_id}.html" title="15080700221882">{$vo.order_sn}</a></td>
-					<td>USD $1024.06</td>
-					<td><strong>Awaiting Payment</strong></td>
-					<td>
-						<a class="order_info" href="/account/orders/view-{$vo.order_id}.html">View Details</a>&nbsp;&nbsp;
-						<a class="order_info" href="/account/print/{$vo.order_list.goods_id}.html" target="_blank">Print Order</a></td>
-				</tr>
-				</foreach>
-				</notempty>
-			</table>
-			<div class="blank20"></div>
-			<div id="turn_page">
-				<li><font class='page_noclick'><em class='icon_page_prev'></em>Previous</font></li><li><font class='page_item_current'>1</font></li><li class='page_last'><font class='page_noclick'>Next<em class='icon_page_next'></em></font></li>
+	<div class="part_container container">
+		<include file="User:left_menu" />
+        
+		<div class="layer_col-1">
+			{:W('Common/UserAcountTop')}                                 
+                                
+			<div class="user-order-list mod-block">
+				<div class="mod-title">My Order</div>
+				<div class="mod-blank">
+					<table>
+					  <tbody><tr>
+						<th>ORDER</th>
+						<th>DATE</th>
+						<th>TRACKING NUMBER</th>
+						<th>ORDER STATUS</th>
+						<th>ORDER TOTAL</th>
+						<th>&nbsp;</th>
+					  </tr>
+						<notempty name="list">
+						<foreach name="list" item="vo">
+						<tr>
+							<td class="order-id">{$vo.order_sn}</td>
+							<td class="order-time">{$vo.add_time|date="m/d/Y H:i:s", ###}</td>
+							<td class="order-teacking-number"></td>
+							<td class="order_item-status">
+								<span class="Processing">
+									<?php if($vo['order_status'] == 0){
+										echo $vo['status']['order_tips'];
+									} 
+									else {
+										echo $vo['status']['order_tips']. ' '. $vo['status']['pay_tips']. '   '. $vo['status']['shipping_tips'];
+									}?>
+								</span>
+							</td>
+							<td class="order_amount">${$vo.order_amount}</td>
+							<td>
+								<span class="order_payment"><a href="/?=order/pay&order_id={$vo.order_id}">Pay Now</a> | </span>
+								<a href="/?=order/view&order_id={$vo.order_id}">View Order</a> | 
+								<a href="/?=order/delete&order_id={$vo.order_id}">Remove</a>
+							</td>
+					  </tr>
+					  </foreach>
+					  </notempty>
+					</tbody>
+					</table>
+				</div>
+				<!-- mod-blank end-->
+				
 			</div>
-        </div>
-		<!-- lib_user_main end-->
+			<!-- user-order-list mod-block end-->
+
+			<form class="form-page" method="get" action="/user.php" name="selectPageForm">
+				<div class="mod-page">
+					<div class="nav-page">
+						<ul class="list-page-nub"></ul>
+					</div>
+					<div class="mod-page-total">{$show}</div>
+				</div>
+			</form>
+			<script type="text/Javascript">
+				function selectPage(sel)
+				{
+				sel.form.submit();
+				}
+			</script>
+			<script type="text/javascript">
+				var from_order_empty = "Please select secondary orders you want to combine.";
+				var to_order_empty = "Please select the first order you want to combine.";
+				var order_same = "The first order same with secondary order, please select again.";
+				var confirm_merge = "Are you sure to merge the two orders?";
+			</script>
+         </div>
+		<!-- layer_col-1 end-->
 		
-    </div>
-	<!-- lib_user end-->
-	
+	</div>
+	<!-- part_container container end-->
+
 </div>
-<!-- main end-->
+<!-- part_main end-->
 
-<include file="Common:footer" />
-
-<script src="__JS__/global.js" type="text/javascript"></script>
-<script src="__JS__/en.js" type="text/javascript"></script>
-<script src="__JS__/user.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-var setStr={"curDate":"2015/08/06 23:17:34","lang":"_en","currSymbol":"USD","currency_symbols":"$"}
-</script>
-<script src="__JS__/main.js" type="text/javascript"></script>
-
+<include file="Common:footer" />  
 
 </body>
 </html>

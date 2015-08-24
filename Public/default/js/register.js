@@ -51,6 +51,10 @@ $(function(){
 			console.log(data)
 			if(data.status == 0) {
 				$('#login_error_show').html(data.info).show(300).delay(3000).hide(300);
+			}else {
+				if(data.url) {
+					location.href = data.url;
+				}
 			}
 		});
 		
@@ -87,7 +91,11 @@ $(function(){
 		
 		$.post('/index.php?s=/admin/register', $('#formRegister').serialize(), function(data){
 			if(data.status == 0) {
-				$('#register_error').html(data.info);
+				$('#register_error').html(data.info).show(300).delay(3000).hide(300);
+			}else {
+				if(data.url) {
+					location.href = data.url;
+				}
 			}
 		});
 		

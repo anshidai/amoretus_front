@@ -34,7 +34,8 @@ class AdminController extends Controller {
 			}
 			set_cookies($info, $_POST['remember']);
 			set_session($info);
-			$this->success('Login successful.', U('index/index'));
+			
+			$this->success('Login successful.', '/index.php?s=/user/index');
 			
 		} else {
 			$this->display('user/login');
@@ -52,12 +53,19 @@ class AdminController extends Controller {
 				$user->email = $user->user_name;
 				$user->last_time = date('Y-m-d H:i:s');
 				
-				if($user->add()) {
-					$this->success('Registration is successful, welcome you to join.', U('user/index'));
+				$info = array('user_name'=>$user->user_name, 'password'=>md5($user->password));
+				
+				if($user_id = $user->add()) {
+					
+					$info['user_id'] = $user_id;
+					
+					set_cookies($info);
+					set_session($info);
+					
+					$this->success('Registration is successful, welcome you to join.', '/index.php?s=/user/index');
 				}
 			}
-			$this->error('Sorry, Registration failed.');
-			//$this->error($userModel->getError());
+			$this->error($user->getError());
 			
 		}else {
 			$this->display('user/register');
@@ -82,6 +90,9 @@ class AdminController extends Controller {
 		cookie('user_id', null);
 		cookie('user_name', null);
 		cookie('password', null);
+		
+		$this->redirect('admin/login');
+		
 	}
 	
 	public function verify()

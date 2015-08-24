@@ -1,16 +1,15 @@
 <div class="h-userandcart">
 	<div class="container">
-	  <div class="cheader-currency hidden-xs">
-		<div class="header-currency-info"><span class="flag_currency_USD">USD</span></div>
-		<ul class="header-currency-list">
-			<li><a href="javascript:;" title="USD" rel="nofollow" class="flag_currency_USD">USD</a></li>
-		</ul>
-	  </div>
-	  <!-- cheader-currency end-->
 
-	  <span class="h-contact hidden-xs"><em></em>service@amoretu.com</span>
+	  <span class="h-contact hidden-xs"><em></em>service@amoretus.com</span>
 	  <div class="topUser">
-		<span class="hidden-xs"> | </span><a href="/index.php?s=/admin/login" rel="nofollow" title="My Account" class="header-login"><em></em>Login/Register</a>
+		<php> if(!session('user_id')) {</php>
+		<a href="/index.php?s=/admin/login" rel="nofollow" title="My Account" class="header-login"><em></em>Login/Register</a>
+		<php> }else {</php>
+		<a class="header-login" title="My Account" rel="nofollow" href="/index.php?s=/user/index"><em></em><php> echo session('user_name');</php></a>
+		<span> | </span>
+		<a title="Logout" rel="nofollow" href="/index.php?s=/user/loginout">Logout</a>
+		<php> }</php>
 		<span> | </span>
 		<a href="user.php?act=collection_list" class="header_wishlist hidden-xs" rel="nofollow" title="Wish List"><em></em>Wish List<span id="header_wish_count">0</span></a>
 		<span class="hidden-xs"> | </span>
