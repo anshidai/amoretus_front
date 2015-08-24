@@ -5,6 +5,7 @@
 <title>My Order</title>
 <link href="__CSS__/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="__JS__/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="__JS__/users.js"></script>
 </head>
 <body class="layer-user">
 <div class="part_main">
@@ -41,15 +42,17 @@
 										echo $vo['status']['order_tips'];
 									} 
 									else {
-										echo $vo['status']['order_tips']. ' '. $vo['status']['pay_tips']. '   '. $vo['status']['shipping_tips'];
+										echo $vo['status']['order_tips']. '; '. $vo['status']['pay_tips']. '; '. $vo['status']['shipping_tips'];
 									}?>
 								</span>
 							</td>
 							<td class="order_amount">${$vo.order_amount}</td>
 							<td>
 								<span class="order_payment"><a href="/?=order/pay&order_id={$vo.order_id}">Pay Now</a> | </span>
-								<a href="/?=order/view&order_id={$vo.order_id}">View Order</a> | 
-								<a href="/?=order/delete&order_id={$vo.order_id}">Remove</a>
+								<a href="/?=order/view&order_id={$vo.order_id}">View Order</a>
+								<if condition="$vo.order_status eq 0">
+								| <a class="confirm ajax-get" href="/?s=order/delete&order_id={$vo.order_id}">Remove</a>
+								</if>
 							</td>
 					  </tr>
 					  </foreach>

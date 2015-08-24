@@ -277,4 +277,90 @@ function get_order_status($order_status = 0, $pay_status = 0, $shipping_status =
 		);
 }
 
+/**
+ * 记录订单操作记录
+ *
+ * @access  public
+ * @param   string  $order_sn           订单编号
+ * @param   integer $order_status       订单状态
+ * @param   integer $shipping_status    配送状态
+ * @param   integer $pay_status         付款状态
+ * @param   string  $note               备注
+ * @param   string  $username           用户名，用户自己的操作则为 buyer
+ * @return  void
+ */
+function order_action($order_id, $order_sn, $order_status, $shipping_status, $pay_status, $note = '', $username = null, $place = 0)
+{
+    if(is_null($username)) {
+        $username = session('user_name');
+    }
+
+	$data = array(
+		'order_id' => $order_id,
+		'action_user' => $username,
+		'order_status' => $order_status,
+		'shipping_status' => $shipping_status,
+		'pay_status' => $pay_status,
+		'action_place' => $place,
+		'action_note' => $note,
+		'log_time' => time(),
+	);
+	M('OrderAction')->add($data);
+}
+
+/**
+ * 记录帐户变动
+ * @param   int     $user_id        用户id
+ * @param   float   $user_money     可用余额变动
+ * @param   float   $frozen_money   冻结余额变动
+ * @param   int     $rank_points    等级积分变动
+ * @param   int     $pay_points     消费积分变动
+ * @param   string  $change_desc    变动说明
+ * @param   int     $change_type    变动类型：参见常量文件
+ * @return  void
+ */
+function log_account_change($user_id, $user_money = 0, $frozen_money = 0, $rank_points = 0, $pay_points = 0, $change_desc = '', $change_type = ACT_OTHER)
+{
+    /* 插入帐户变动记录 */
+    $account_log = array(
+        'user_id'       => $user_id,
+        'user_money'    => $user_money,
+        'frozen_money'  => $frozen_money,
+        'rank_points'   => $rank_points,
+        'pay_points'    => $pay_points,
+        'change_time'   => time(),
+        'change_desc'   => $change_desc,
+        'change_type'   => $change_type
+    );
+	M('AccountLog')->add($account_log);
+
+    /* 更新用户信息 */
+    $sql = "UPDATE ".C('DB_PREFIX')."users ".
+            " SET user_money = user_money + ('$user_money')," .
+            " frozen_money = frozen_money + ('$frozen_money')," .
+            " rank_points = rank_points + ('$rank_points')," .
+            " pay_points = pay_points + ('$pay_points')" .
+            " WHERE user_id = '$user_id' LIMIT 1";
+    M()->query($sql);
+}
+
+/**
+ * 处理红包（下订单时设为使用，取消（无效，退货）订单时设为未使用
+ * @param   int     $bonus_id   红包编号
+ * @param   int     $order_id   订单号
+ * @param   int     $is_used    是否使用了
+ */
+function change_user_bonus($bonus_id, $order_id, $is_used = true)
+{
+	$data = array(
+		'used_time' => time(),
+		'order_id' => $order_id,
+	);
+	if(!$is_used) {
+		$data['used_time'] = 0;
+		$data['order_id'] = 0;
+	}
+	M('UserBonus')->where("bonus_id = '$bonus_id'")->save($data);
+}
+
 
