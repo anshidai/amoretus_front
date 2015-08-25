@@ -32,8 +32,8 @@ class UsersModel extends Model {
 	public function UserLogin($username, $pwd)
 	{
 		if(!empty($username) && !empty($pwd)) {
-			$info = $this->field('user_id,user_name,email,password')->where("user_name='{$username}'")->find();
-			if($info && $info['password'] == md5($pwd)) {
+			$info = $this->field('user_id,user_name,email,password,ec_salt')->where("user_name='{$username}'")->find();
+			if($info && $info['password'] == md5(md5($pwd).$info['ec_salt'])) {
 				return $info;
 			}
 		}

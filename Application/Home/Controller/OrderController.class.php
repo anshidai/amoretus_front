@@ -114,6 +114,46 @@ class OrderController extends AdminController {
 	}
 	
 	
+	public function detail()
+	{
+		$order_id = I('get.order_id', 0, 'intval');
+		
+		if(empty($order_id)) {
+			$this->redirect('/?s=order/index');
+		}
+		$user_id = session('user_id');
+
+		$order_info = D('OrderInfo')->where("order_id='{$order_id}' AND user_id='{$user_id}'")->find();
+		if(empty($order_info)) {
+			$this->redirect('/?s=order/index');
+		}
+		
+		$order_info['order_addres'] = $order_info['consignee'] ;
+		
+		if($order_info['country'] && $country_name = getRegion($order_info['country'])) {
+			$order_info['order_addres'] .= ', '.$country_name['region_name'];
+		}
+		if($order_info['province'] && $province_name = getRegion($order_info['province'])) {
+			$order_info['order_addres'] .= ', '.$province_name['region_name'];
+		}
+		if($order_info['city'] && $city_name = getRegion($order_info['city'])) {
+			$order_info['order_addres'] .= ', '.$city_name['region_name'];
+		}
+		if($order_info['district'] && $district_name = getRegion($order_info['district'])) {
+			$order_info['order_addres'] .= ', '.$district_name['region_name'];
+		}
+		$order_info['order_addres'] .= ', '.$order_info['address'];
+		
+		$order_info['order_addres'] .= $order_info['mobile']? ', '.$order_info['mobile']: $order_info['tel'];
+		
+		
+		$order_info['goods_list'] = D('OrderGoods')->getOrderGoods($order_id);
+
+		$this->assign('info', $order_info); 
+		$this->display('User/order_detail');
+	}
+	
+	
 	
 }
 	

@@ -363,4 +363,23 @@ function change_user_bonus($bonus_id, $order_id, $is_used = true)
 	M('UserBonus')->where("bonus_id = '$bonus_id'")->save($data);
 }
 
+function getRegion($region_id = 0)
+{
+	$key = 'region_all';
+	
+	$data = S($key);
+	if(empty($data)) {
+		$res = M('Region')->select();
+		if($res) {
+			foreach($res as $k=>$val) {
+				$data[$val['region_id']] = $val;
+			}
+			S($key, $data, 3600);
+		}
+		unset($res);
+	}
+	return $region_id? $data[$region_id]: $data;
+}
+
+
 

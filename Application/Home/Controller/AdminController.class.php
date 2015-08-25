@@ -32,6 +32,7 @@ class AdminController extends Controller {
 			if(empty($info)) {
 				$this->error('Incorrect account address or password. Please try again.');
 			}
+			
 			set_cookies($info, $_POST['remember']);
 			set_session($info);
 			
@@ -52,8 +53,10 @@ class AdminController extends Controller {
 				
 				$user->email = $user->user_name;
 				$user->last_time = date('Y-m-d H:i:s');
-				
-				$info = array('user_name'=>$user->user_name, 'password'=>md5($user->password));
+				$user->ec_salt = rand(1,9999);
+				$user->password = md5(md5($password). $ec_salt);
+			
+				$info = array('user_name'=>$user->user_name, 'password'=>$user->password);
 				
 				if($user_id = $user->add()) {
 					
