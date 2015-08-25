@@ -10,7 +10,7 @@ class AddressController extends AdminController {
 	public function add()
 	{
 		
-		$this->display('user/add');
+		$this->display('User/add');
 	}
 	
 	

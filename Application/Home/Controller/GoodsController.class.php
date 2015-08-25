@@ -40,12 +40,12 @@ class GoodsController extends Controller {
 		$argv['site_url'] = C('SITE_URL');
 		$this->assign('argv', $argv);
 
-		$this->display('home/goods_view');
+		$this->display('Home/goods_view');
 	}
 	
 	public function size_show()
 	{
-		$this->display('common/size_guide_layer');
+		$this->display('Common/size_guide_layer');
 	}
 
 

@@ -33,7 +33,7 @@ class OrderController extends AdminController {
 		$this->assign('list', $list); 
 		$this->assign('page', $show);
 		
-		$this->display('user/order_index');
+		$this->display('User/order_index');
 
 	}
 	

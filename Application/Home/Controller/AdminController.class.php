@@ -38,7 +38,7 @@ class AdminController extends Controller {
 			$this->success('Login successful.', '/index.php?s=/user/index');
 			
 		} else {
-			$this->display('user/login');
+			$this->display('User/login');
 		}
 		
 	}
@@ -68,7 +68,7 @@ class AdminController extends Controller {
 			$this->error($user->getError());
 			
 		}else {
-			$this->display('user/register');
+			$this->display('User/register');
 		}
 	}
 	
@@ -77,7 +77,7 @@ class AdminController extends Controller {
 		if(IS_POST) {
 		
 		}else {
-			$this->display('user/forgotpassword');
+			$this->display('User/forgotpassword');
 		}
 		
 		

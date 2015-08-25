@@ -37,7 +37,7 @@ class CategoryController extends Controller {
 
 		$this->assign('argv', $argv);
 
-		$this->display('home/category');
+		$this->display('Home/category');
 	}
 
 

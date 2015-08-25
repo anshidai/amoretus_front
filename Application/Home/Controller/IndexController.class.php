@@ -14,7 +14,7 @@ class IndexController extends Controller {
 	public function index()
 	{
 		
-		$this->display('home/index');
+		$this->display('Home/index');
 		
 	}
 
