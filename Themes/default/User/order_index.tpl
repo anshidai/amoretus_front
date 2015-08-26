@@ -48,7 +48,7 @@
 							</td>
 							<td class="order_amount">${$vo.order_amount}</td>
 							<td>
-								<a href="/?=order/view&order_id={$vo.order_id}">View Order</a>
+								<a href="/?s=order/detail&order_id={$vo.order_id}">View Order</a>
 								<if condition="$vo.order_status eq 0">
 								| <a class="confirm ajax-get" href="/?s=order/delete&order_id={$vo.order_id}">Remove</a>
 								</if>
@@ -63,27 +63,6 @@
 				
 			</div>
 			<!-- user-order-list mod-block end-->
-
-			<form class="form-page" method="get" action="/user.php" name="selectPageForm">
-				<div class="mod-page">
-					<div class="nav-page">
-						<ul class="list-page-nub"></ul>
-					</div>
-					<div class="mod-page-total">{$show}</div>
-				</div>
-			</form>
-			<script type="text/Javascript">
-				function selectPage(sel)
-				{
-				sel.form.submit();
-				}
-			</script>
-			<script type="text/javascript">
-				var from_order_empty = "Please select secondary orders you want to combine.";
-				var to_order_empty = "Please select the first order you want to combine.";
-				var order_same = "The first order same with secondary order, please select again.";
-				var confirm_merge = "Are you sure to merge the two orders?";
-			</script>
          </div>
 		<!-- layer_col-1 end-->
 		

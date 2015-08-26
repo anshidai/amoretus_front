@@ -27,9 +27,6 @@ class OrderController extends AdminController {
 			}
 		}
 		
-		
-		//dump($list);
-		
 		$this->assign('list', $list); 
 		$this->assign('page', $show);
 		

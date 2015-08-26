@@ -68,6 +68,8 @@
 					</div>
 					<div class="doPay">
 					<div class="re_Pay">
+						<if condition="$info.pay_status lt 2">
+					
 						<form action="https://ssl.nowipay.com:8443/pay" method="post" style="text-align:center;" name="doPay">
 							<input type="hidden" value="M0000002" name="merNo">
 							<input type="hidden" value="0344705803811358" name="orderNo">
@@ -104,6 +106,7 @@
 							<input type="hidden" value="d1917a59082000e0ddd746c274577d0f" name="md5Info">
 							<input type="submit" class="pay_button" value="pay now" name="b1" alt="submit">
 						</form>
+						</if>
 					</div>
 					<a class="type_back" href="/?s=order/index">Back</a>
 					<br class="clear">

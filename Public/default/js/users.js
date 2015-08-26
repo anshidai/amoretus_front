@@ -20,6 +20,26 @@ $(function(){
 	});
 	
 	
+	$('.loveit_icon').click(function(){
+		$(this).siblings('.lovealert').toggle();
+	});
+	
+	$('.sign-in-button').click(function(){
+		var _this = $(this);
+		
+		var url  = '/?s=collect/delete&rec_id='+$(this).attr('rel');
+		$.getJSON(url, function(data){
+			if(data.status == 1) {
+				_this.parent().parent().remove();
+			}else {
+				alert(data.info);
+			}
+		});
+	});
+	
+	
+	
+	
 });
 
 function toggle_cart(elem){
