@@ -5,6 +5,7 @@
 <title>My Account_</title>
 <link href="__CSS__/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="__JS__/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="__JS__/common.js"></script>
 </head>
 <body class="layer-user">
 <div class="part_main">

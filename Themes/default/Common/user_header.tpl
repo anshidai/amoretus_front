@@ -5,7 +5,7 @@
 	<div class="h-main-wapper">
 		<div class="container">
 			<div class="mod-logo">
-				<a href="https://www.amoretu.com/">
+				<a href="/">
 					<img src="__CSS__/img/logo.png" alt="AMORETU" width="270" height="30" />
 				</a>
 			</div>

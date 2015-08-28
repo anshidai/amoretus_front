@@ -136,7 +136,7 @@
 
 	<div class="nav_delivery clearfix">
 	  <p class="delivery_L"><span><em></em>FREE SHIPPING ON ALL ORDERS</span></p>
-	  <p class="delivery_M"><span><em></em>REGISTER FOR FREE <b>£3 CASH</b></span></p>
+	  <p class="delivery_M"><span><em></em>REGISTER FOR FREE <b></b></span></p>
 	  <p class="delivery_R"><span><em></em>FREE EXCHANGE &amp; RETURN IN <b>60 DAYS</b></span></p>
 	</div>
 </div>

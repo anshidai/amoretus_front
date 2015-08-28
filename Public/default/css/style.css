@@ -1781,3 +1781,12 @@ border-style: solid;color: #000;vertical-align: middle; min-width:0px; cursor:po
 
 .zoomDiv{z-index:999;position:absolute;top:0px;left:0px;width:200px;height:200px;background:#fff;border:1px solid #ccc;display:none;text-align:center;overflow:hidden;}
 .zoomMask{position:absolute;background:url('img/mask.png') repeat scroll 0 0 transparent;cursor:move;z-index:1;}
+
+button.close {padding: 0;cursor: pointer;border: 0 none;background: none;}
+.close {float: right;font-size: 20px;font-weight: bold;line-height: 20px;color: #000000;text-shadow: 0 1px 0 #ffffff;opacity: 0.2;filter: alpha(opacity=20);}
+.alert-info {background-color: #D9EDF7;border-color: #BCE8F1;color: #3A87AD;}
+.alert-error {color: white;border-color: #eed3d7;background-color: #FF6666;}
+.alert-success {color: #468847;background-color: #CCFF99;border-color: #eed3d7;}
+#top-alert {display: block;top: 50px;left: 220px;right: 20px;z-index: 3000;margin-top: 20px;padding-top: 12px;padding-bottom: 12px;overflow: hidden;font-size: 16px;}
+#top-alert .close{right:35px;position: fixed;top:75px;}
+.alert-content{margin-left: 14px;max-width:600px;word-wrap: break-word;word-break: break-word;}

@@ -5,7 +5,8 @@
 <title>My Order</title>
 <link href="__CSS__/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="__JS__/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="__JS__/users.js"></script>
+<script type="text/javascript" src="__JS__/common.js"></script>
+<script type="text/javascript" src="__JS__/user.js"></script>
 </head>
 <body class="layer-user">
 <div class="part_main">
