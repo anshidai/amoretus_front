@@ -102,7 +102,7 @@ class OrderController extends AdminController {
 			);
 			$order->where("order_id = '$order_id'")->save($data);
 			
-			$this->success('Cancel the order successfully.', '/?s=/order/index');
+			$this->success('Cancel the order successfully.', '/?s=order/index');
 			
 		} else {
 			$this->error('Order Cancel failed');
