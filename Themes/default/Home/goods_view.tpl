@@ -75,9 +75,9 @@
 					<div class="mod-item-attr">
 
 						<br class="clear"/>
-						<form action="javascript:addToCart(25196 , 0 , this)" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
+						<form action="javascript:addToCart({$argv.info.goods_id} , 0 , this)" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
 							<div class="item-attr-info">
-								<h1 class="item-title goods_name_25196" itemprop="name">Soft Thin Lacy Bubble Chemises</h1>
+								<h1 class="item-title goods_name_{$argv.info.goods_id}" itemprop="name">{$argv.info.goods_name}</h1>
 								<span class="SKU">SKU: {$argv.info.goods_sn}</span>
 								<div class="item-rank">
 									<span class="view_rank hidden-xs"><a href="#tab_comment_list" rel="nofollow">Average costomers reviews</a></span>
@@ -123,9 +123,7 @@
 																<b>Click to view photo</b>
 															</span>
 														</a>
-													
 													</span>
-
 													<div class="atpError" id="colour_atpError" style="display:none"></div>
 												</div>
 												<!-- attr-list end-->
